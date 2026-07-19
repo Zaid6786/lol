@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Student_Bus_Assignment;
+import com.example.demo.models.StudentBusAssignment;
 import com.example.demo.repository.StudentBusAssignmentRepository;
 import com.example.demo.service.StudentBusAssignmentService;
 
@@ -17,25 +17,25 @@ public class StudentBusAssignmentServiceImple implements StudentBusAssignmentSer
     private StudentBusAssignmentRepository studentBusAssignmentRepository;
 
     @Override
-    public Student_Bus_Assignment saveStudentBusAssignment(Student_Bus_Assignment studentBusAssignment) {
+    public StudentBusAssignment saveStudentBusAssignment(StudentBusAssignment studentBusAssignment) {
         return studentBusAssignmentRepository.save(studentBusAssignment);
     }
 
     @Override
-    public List<Student_Bus_Assignment> getAllStudentBusAssignments() {
+    public List<StudentBusAssignment> getAllStudentBusAssignments() {
         return studentBusAssignmentRepository.findAll();
     }
 
     @Override
-    public Optional<Student_Bus_Assignment> getStudentBusAssignmentById(Long id) {
+    public Optional<StudentBusAssignment> getStudentBusAssignmentById(Long id) {
         return studentBusAssignmentRepository.findById(id);
     }
 
     @Override
-    public Student_Bus_Assignment updateStudentBusAssignment(Long id,
-            Student_Bus_Assignment studentBusAssignment) {
+    public StudentBusAssignment updateStudentBusAssignment(Long id,
+            StudentBusAssignment studentBusAssignment) {
 
-        Student_Bus_Assignment existingAssignment =
+        StudentBusAssignment existingAssignment =
                 studentBusAssignmentRepository.findById(id).orElse(null);
 
         if (existingAssignment != null) {

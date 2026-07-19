@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.Student_Bus_Assignment;
+import com.example.demo.models.StudentBusAssignment;
 
 public interface StudentBusAssignmentService {
 
-    Student_Bus_Assignment saveStudentBusAssignment(Student_Bus_Assignment studentBusAssignment);
+    StudentBusAssignment saveStudentBusAssignment(StudentBusAssignment studentBusAssignment);
 
-    List<Student_Bus_Assignment> getAllStudentBusAssignments();
+    List<StudentBusAssignment> getAllStudentBusAssignments();
 
-    Optional<Student_Bus_Assignment> getStudentBusAssignmentById(Long id);
+    Optional<StudentBusAssignment> getStudentBusAssignmentById(Long id);
 
-    Student_Bus_Assignment updateStudentBusAssignment(Long id, Student_Bus_Assignment studentBusAssignment);
+    StudentBusAssignment updateStudentBusAssignment(Long id, StudentBusAssignment studentBusAssignment);
 
     void deleteStudentBusAssignment(Long id);
 

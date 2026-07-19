@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Bus_Location;
+import com.example.demo.models.BusLocation;
 import com.example.demo.repository.BusLocationRepository;
 import com.example.demo.service.BusLocationService;
 
@@ -17,24 +17,24 @@ public class BusLocationServiceImple implements BusLocationService {
     private BusLocationRepository busLocationRepository;
 
     @Override
-    public Bus_Location saveBusLocation(Bus_Location busLocation) {
+    public BusLocation saveBusLocation(BusLocation busLocation) {
         return busLocationRepository.save(busLocation);
     }
 
     @Override
-    public List<Bus_Location> getAllBusLocations() {
+    public List<BusLocation> getAllBusLocations() {
         return busLocationRepository.findAll();
     }
 
     @Override
-    public Optional<Bus_Location> getBusLocationById(Long id) {
+    public Optional<BusLocation> getBusLocationById(Long id) {
         return busLocationRepository.findById(id);
     }
 
     @Override
-    public Bus_Location updateBusLocation(Long id, Bus_Location busLocation) {
+    public BusLocation updateBusLocation(Long id, BusLocation busLocation) {
 
-        Bus_Location existingBusLocation = busLocationRepository.findById(id).orElse(null);
+        BusLocation existingBusLocation = busLocationRepository.findById(id).orElse(null);
 
         if (existingBusLocation != null) {
 

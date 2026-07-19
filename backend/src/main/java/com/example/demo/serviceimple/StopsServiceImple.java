@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.stops;
+import com.example.demo.models.Stops;
 import com.example.demo.repository.StopsRepository;
 import com.example.demo.service.StopsService;
 
@@ -17,24 +17,24 @@ public class StopsServiceImple implements StopsService {
     private StopsRepository stopsRepository;
 
     @Override
-    public stops saveStop(stops stop) {
+    public Stops saveStop(Stops stop) {
         return stopsRepository.save(stop);
     }
 
     @Override
-    public List<stops> getAllStops() {
+    public List<Stops> getAllStops() {
         return stopsRepository.findAll();
     }
 
     @Override
-    public Optional<stops> getStopById(Long id) {
+    public Optional<Stops> getStopById(Long id) {
         return stopsRepository.findById(id);
     }
 
     @Override
-    public stops updateStop(Long id, stops stop) {
+    public Stops updateStop(Long id, Stops stop) {
 
-        stops existingStop = stopsRepository.findById(id).orElse(null);
+        Stops existingStop = stopsRepository.findById(id).orElse(null);
 
         if (existingStop != null) {
 

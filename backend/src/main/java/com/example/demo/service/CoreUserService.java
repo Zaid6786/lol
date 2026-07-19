@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.core_user;
+import com.example.demo.models.CoreUser;
 
 public interface CoreUserService {
 
-    core_user saveCoreUser(core_user coreUser);
+    CoreUser saveCoreUser(CoreUser coreUser);
 
-    List<core_user> getAllCoreUsers();
+    List<CoreUser> getAllCoreUsers();
 
-    Optional<core_user> getCoreUserById(Long id);
+    Optional<CoreUser> getCoreUserById(Long id);
 
-    core_user updateCoreUser(Long id, core_user coreUser);
+    CoreUser updateCoreUser(Long id, CoreUser coreUser);
 
     void deleteCoreUser(Long id);
 

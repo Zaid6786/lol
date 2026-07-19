@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "real_time_tracking")
-public class Real_Time_Tracking {
+public class RealTimeTracking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +44,11 @@ public class Real_Time_Tracking {
     private LocalDateTime trackingTime;
 
     // Default Constructor
-    public Real_Time_Tracking() {
+    public RealTimeTracking() {
     }
 
     // Parameterized Constructor
-    public Real_Time_Tracking(Long trackingId, Long busId,
+    public RealTimeTracking(Long trackingId, Long busId,
                               BigDecimal latitude, BigDecimal longitude,
                               BigDecimal currentSpeed, String currentStop,
                               String nextStop, Integer etaMinutes,
@@ -141,7 +141,7 @@ public class Real_Time_Tracking {
 
     @Override
     public String toString() {
-        return "Real_Time_Tracking{" +
+        return "RealTimeTracking{" +
                 "trackingId=" + trackingId +
                 ", busId=" + busId +
                 ", latitude=" + latitude +

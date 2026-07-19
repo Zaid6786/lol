@@ -3,9 +3,9 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.models.Bus_Location;
+import com.example.demo.models.BusLocation;
 
 @Repository
-public interface BusLocationRepository extends JpaRepository<Bus_Location, Long> {
+public interface BusLocationRepository extends JpaRepository<BusLocation, Long> {
 
 }

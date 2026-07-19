@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "stops")
-public class stops {
+public class Stops {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,11 +41,11 @@ public class stops {
     private LocalDateTime createdAt;
 
     // Default Constructor
-    public stops() {
+    public Stops() {
     }
 
     // Parameterized Constructor
-    public stops(Long stopId, Long routeId, String stopName,
+    public Stops(Long stopId, Long routeId, String stopName,
                  BigDecimal latitude, BigDecimal longitude,
                  Integer sequence, Boolean isMajorStop,
                  LocalDateTime createdAt) {
@@ -128,7 +128,7 @@ public class stops {
 
     @Override
     public String toString() {
-        return "stops{" +
+        return "Stops{" +
                 "stopId=" + stopId +
                 ", routeId=" + routeId +
                 ", stopName='" + stopName + '\'' +

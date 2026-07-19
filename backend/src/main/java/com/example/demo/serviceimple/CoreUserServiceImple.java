@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.core_user;
+import com.example.demo.models.CoreUser;
 import com.example.demo.repository.CoreUserRepository;
 import com.example.demo.service.CoreUserService;
 
@@ -17,24 +17,24 @@ public class CoreUserServiceImple implements CoreUserService {
     private CoreUserRepository coreUserRepository;
 
     @Override
-    public core_user saveCoreUser(core_user coreUser) {
+    public CoreUser saveCoreUser(CoreUser coreUser) {
         return coreUserRepository.save(coreUser);
     }
 
     @Override
-    public List<core_user> getAllCoreUsers() {
+    public List<CoreUser> getAllCoreUsers() {
         return coreUserRepository.findAll();
     }
 
     @Override
-    public Optional<core_user> getCoreUserById(Long id) {
+    public Optional<CoreUser> getCoreUserById(Long id) {
         return coreUserRepository.findById(id);
     }
 
     @Override
-    public core_user updateCoreUser(Long id, core_user coreUser) {
+    public CoreUser updateCoreUser(Long id, CoreUser coreUser) {
 
-        core_user existingCoreUser =
+        CoreUser existingCoreUser =
                 coreUserRepository.findById(id).orElse(null);
 
         if (existingCoreUser != null) {

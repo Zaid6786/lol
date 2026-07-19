@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.Bus_Location;
+import com.example.demo.models.BusLocation;
 
 public interface BusLocationService {
 
-    Bus_Location saveBusLocation(Bus_Location busLocation);
+    BusLocation saveBusLocation(BusLocation busLocation);
 
-    List<Bus_Location> getAllBusLocations();
+    List<BusLocation> getAllBusLocations();
 
-    Optional<Bus_Location> getBusLocationById(Long id);
+    Optional<BusLocation> getBusLocationById(Long id);
 
-    Bus_Location updateBusLocation(Long id, Bus_Location busLocation);
+    BusLocation updateBusLocation(Long id, BusLocation busLocation);
 
     void deleteBusLocation(Long id);
 

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.student;
+import com.example.demo.models.Student;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
 
@@ -17,24 +17,24 @@ public class StudentServiceImple implements StudentService {
     private StudentRepository studentRepository;
 
     @Override
-    public student saveStudent(student student) {
+    public Student saveStudent(Student student) {
         return studentRepository.save(student);
     }
 
     @Override
-    public List<student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
     @Override
-    public Optional<student> getStudentById(Long id) {
+    public Optional<Student> getStudentById(Long id) {
         return studentRepository.findById(id);
     }
 
     @Override
-    public student updateStudent(Long id, student student) {
+    public Student updateStudent(Long id, Student student) {
 
-        student existingStudent = studentRepository.findById(id).orElse(null);
+        Student existingStudent = studentRepository.findById(id).orElse(null);
 
         if (existingStudent != null) {
 

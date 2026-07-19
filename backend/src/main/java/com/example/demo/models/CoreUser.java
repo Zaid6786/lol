@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "core_user")
-public class core_user {
+public class CoreUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,11 +40,11 @@ public class core_user {
     private LocalDateTime createdAt;
 
     // Default Constructor
-    public core_user() {
+    public CoreUser() {
     }
 
     // Parameterized Constructor
-    public core_user(Long userId, String username, String email,
+    public CoreUser(Long userId, String username, String email,
                      String password, String role,
                      String phoneNumber, Boolean isActive,
                      LocalDateTime createdAt) {
@@ -127,7 +127,7 @@ public class core_user {
 
     @Override
     public String toString() {
-        return "core_user{" +
+        return "CoreUser{" +
                 "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +

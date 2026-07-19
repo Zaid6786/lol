@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.Operations_Engagement;
+import com.example.demo.models.OperationsEngagement;
 
 public interface OperationsEngagementService {
 
-    Operations_Engagement saveOperationsEngagement(Operations_Engagement operationsEngagement);
+    OperationsEngagement saveOperationsEngagement(OperationsEngagement operationsEngagement);
 
-    List<Operations_Engagement> getAllOperationsEngagements();
+    List<OperationsEngagement> getAllOperationsEngagements();
 
-    Optional<Operations_Engagement> getOperationsEngagementById(Long id);
+    Optional<OperationsEngagement> getOperationsEngagementById(Long id);
 
-    Operations_Engagement updateOperationsEngagement(Long id, Operations_Engagement operationsEngagement);
+    OperationsEngagement updateOperationsEngagement(Long id, OperationsEngagement operationsEngagement);
 
     void deleteOperationsEngagement(Long id);
 

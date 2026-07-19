@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Real_Time_Tracking;
+import com.example.demo.models.RealTimeTracking;
 import com.example.demo.repository.RealTimeTrackingRepository;
 import com.example.demo.service.RealTimeTrackingService;
 
@@ -17,25 +17,25 @@ public class RealTimeTrackingServiceImple implements RealTimeTrackingService {
     private RealTimeTrackingRepository realTimeTrackingRepository;
 
     @Override
-    public Real_Time_Tracking saveRealTimeTracking(Real_Time_Tracking realTimeTracking) {
+    public RealTimeTracking saveRealTimeTracking(RealTimeTracking realTimeTracking) {
         return realTimeTrackingRepository.save(realTimeTracking);
     }
 
     @Override
-    public List<Real_Time_Tracking> getAllRealTimeTrackings() {
+    public List<RealTimeTracking> getAllRealTimeTrackings() {
         return realTimeTrackingRepository.findAll();
     }
 
     @Override
-    public Optional<Real_Time_Tracking> getRealTimeTrackingById(Long id) {
+    public Optional<RealTimeTracking> getRealTimeTrackingById(Long id) {
         return realTimeTrackingRepository.findById(id);
     }
 
     @Override
-    public Real_Time_Tracking updateRealTimeTracking(Long id,
-            Real_Time_Tracking realTimeTracking) {
+    public RealTimeTracking updateRealTimeTracking(Long id,
+            RealTimeTracking realTimeTracking) {
 
-        Real_Time_Tracking existingRealTimeTracking =
+        RealTimeTracking existingRealTimeTracking =
                 realTimeTrackingRepository.findById(id).orElse(null);
 
         if (existingRealTimeTracking != null) {

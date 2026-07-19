@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.Real_Time_Tracking;
+import com.example.demo.models.RealTimeTracking;
 import com.example.demo.service.RealTimeTrackingService;
 
 @RestController
@@ -19,22 +19,22 @@ public class RealTimeTrackingController {
 
     // Save Real Time Tracking
     @PostMapping("/save")
-    public Real_Time_Tracking saveRealTimeTracking(
-            @RequestBody Real_Time_Tracking realTimeTracking) {
+    public RealTimeTracking saveRealTimeTracking(
+            @RequestBody RealTimeTracking realTimeTracking) {
 
         return realTimeTrackingService.saveRealTimeTracking(realTimeTracking);
     }
 
     // Get All Real Time Tracking Records
     @GetMapping("/getall")
-    public List<Real_Time_Tracking> getAllRealTimeTrackings() {
+    public List<RealTimeTracking> getAllRealTimeTrackings() {
 
         return realTimeTrackingService.getAllRealTimeTrackings();
     }
 
     // Get Real Time Tracking By Id
     @GetMapping("/get/{id}")
-    public Optional<Real_Time_Tracking> getRealTimeTrackingById(
+    public Optional<RealTimeTracking> getRealTimeTrackingById(
             @PathVariable Long id) {
 
         return realTimeTrackingService.getRealTimeTrackingById(id);
@@ -42,9 +42,9 @@ public class RealTimeTrackingController {
 
     // Update Real Time Tracking
     @PutMapping("/update/{id}")
-    public Real_Time_Tracking updateRealTimeTracking(
+    public RealTimeTracking updateRealTimeTracking(
             @PathVariable Long id,
-            @RequestBody Real_Time_Tracking realTimeTracking) {
+            @RequestBody RealTimeTracking realTimeTracking) {
 
         return realTimeTrackingService.updateRealTimeTracking(id, realTimeTracking);
     }

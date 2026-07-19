@@ -3,9 +3,9 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.models.stops;
+import com.example.demo.models.Stops;
 
 @Repository
-public interface StopsRepository extends JpaRepository<stops, Long> {
+public interface StopsRepository extends JpaRepository<Stops, Long> {
 
 }

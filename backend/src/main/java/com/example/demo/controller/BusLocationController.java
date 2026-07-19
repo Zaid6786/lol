@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.Bus_Location;
+import com.example.demo.models.BusLocation;
 import com.example.demo.service.BusLocationService;
 
 @RestController
@@ -19,26 +19,26 @@ public class BusLocationController {
 
     // Save Bus Location
     @PostMapping("/save")
-    public Bus_Location saveBusLocation(@RequestBody Bus_Location busLocation) {
+    public BusLocation saveBusLocation(@RequestBody BusLocation busLocation) {
         return busLocationService.saveBusLocation(busLocation);
     }
 
     // Get All Bus Locations
     @GetMapping("/getall")
-    public List<Bus_Location> getAllBusLocations() {
+    public List<BusLocation> getAllBusLocations() {
         return busLocationService.getAllBusLocations();
     }
 
     // Get Bus Location By Id
     @GetMapping("/get/{id}")
-    public Optional<Bus_Location> getBusLocationById(@PathVariable Long id) {
+    public Optional<BusLocation> getBusLocationById(@PathVariable Long id) {
         return busLocationService.getBusLocationById(id);
     }
 
     // Update Bus Location
     @PutMapping("/update/{id}")
-    public Bus_Location updateBusLocation(@PathVariable Long id,
-            @RequestBody Bus_Location busLocation) {
+    public BusLocation updateBusLocation(@PathVariable Long id,
+            @RequestBody BusLocation busLocation) {
 
         return busLocationService.updateBusLocation(id, busLocation);
     }

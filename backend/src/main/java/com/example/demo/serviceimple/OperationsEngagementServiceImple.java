@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Operations_Engagement;
+import com.example.demo.models.OperationsEngagement;
 import com.example.demo.repository.OperationsEngagementRepository;
 import com.example.demo.service.OperationsEngagementService;
 
@@ -17,25 +17,25 @@ public class OperationsEngagementServiceImple implements OperationsEngagementSer
     private OperationsEngagementRepository operationsEngagementRepository;
 
     @Override
-    public Operations_Engagement saveOperationsEngagement(Operations_Engagement operationsEngagement) {
+    public OperationsEngagement saveOperationsEngagement(OperationsEngagement operationsEngagement) {
         return operationsEngagementRepository.save(operationsEngagement);
     }
 
     @Override
-    public List<Operations_Engagement> getAllOperationsEngagements() {
+    public List<OperationsEngagement> getAllOperationsEngagements() {
         return operationsEngagementRepository.findAll();
     }
 
     @Override
-    public Optional<Operations_Engagement> getOperationsEngagementById(Long id) {
+    public Optional<OperationsEngagement> getOperationsEngagementById(Long id) {
         return operationsEngagementRepository.findById(id);
     }
 
     @Override
-    public Operations_Engagement updateOperationsEngagement(Long id,
-            Operations_Engagement operationsEngagement) {
+    public OperationsEngagement updateOperationsEngagement(Long id,
+            OperationsEngagement operationsEngagement) {
 
-        Operations_Engagement existingOperationsEngagement =
+        OperationsEngagement existingOperationsEngagement =
                 operationsEngagementRepository.findById(id).orElse(null);
 
         if (existingOperationsEngagement != null) {

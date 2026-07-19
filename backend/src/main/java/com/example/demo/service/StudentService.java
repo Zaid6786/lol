@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.student;
+import com.example.demo.models.Student;
 
 public interface StudentService {
 
-    student saveStudent(student student);
+    Student saveStudent(Student student);
 
-    List<student> getAllStudents();
+    List<Student> getAllStudents();
 
-    Optional<student> getStudentById(Long id);
+    Optional<Student> getStudentById(Long id);
 
-    student updateStudent(Long id, student student);
+    Student updateStudent(Long id, Student student);
 
     void deleteStudent(Long id);
 

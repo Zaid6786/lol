@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.fleet_routing;
+import com.example.demo.models.FleetRouting;
 import com.example.demo.repository.FleetRoutingRepository;
 import com.example.demo.service.FleetRoutingService;
 
@@ -17,24 +17,24 @@ public class FleetRoutingServiceImple implements FleetRoutingService {
     private FleetRoutingRepository fleetRoutingRepository;
 
     @Override
-    public fleet_routing saveFleetRouting(fleet_routing fleetRouting) {
+    public FleetRouting saveFleetRouting(FleetRouting fleetRouting) {
         return fleetRoutingRepository.save(fleetRouting);
     }
 
     @Override
-    public List<fleet_routing> getAllFleetRoutings() {
+    public List<FleetRouting> getAllFleetRoutings() {
         return fleetRoutingRepository.findAll();
     }
 
     @Override
-    public Optional<fleet_routing> getFleetRoutingById(Long id) {
+    public Optional<FleetRouting> getFleetRoutingById(Long id) {
         return fleetRoutingRepository.findById(id);
     }
 
     @Override
-    public fleet_routing updateFleetRouting(Long id, fleet_routing fleetRouting) {
+    public FleetRouting updateFleetRouting(Long id, FleetRouting fleetRouting) {
 
-        fleet_routing existingFleetRouting =
+        FleetRouting existingFleetRouting =
                 fleetRoutingRepository.findById(id).orElse(null);
 
         if (existingFleetRouting != null) {

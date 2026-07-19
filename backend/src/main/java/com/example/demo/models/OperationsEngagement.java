@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "operations_engagement")
-public class Operations_Engagement {
+public class OperationsEngagement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,11 +40,11 @@ public class Operations_Engagement {
     private LocalDateTime createdAt;
 
     // Default Constructor
-    public Operations_Engagement() {
+    public OperationsEngagement() {
     }
 
     // Parameterized Constructor
-    public Operations_Engagement(Long operationId, Long busId,
+    public OperationsEngagement(Long operationId, Long busId,
             Long driverId, Long routeId,
             String operationType, String remarks,
             String status, LocalDateTime createdAt) {
@@ -127,7 +127,7 @@ public class Operations_Engagement {
 
     @Override
     public String toString() {
-        return "Operations_Engagement{" +
+        return "OperationsEngagement{" +
                 "operationId=" + operationId +
                 ", busId=" + busId +
                 ", driverId=" + driverId +

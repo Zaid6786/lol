@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.student;
+import com.example.demo.models.Student;
 import com.example.demo.service.StudentService;
 
 @RestController
@@ -19,26 +19,26 @@ public class StudentController {
 
     // Save Student
     @PostMapping("/save")
-    public student saveStudent(@RequestBody student student) {
+    public Student saveStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }
 
     // Get All Students
     @GetMapping("/getall")
-    public List<student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
     // Get Student By Id
     @GetMapping("/get/{id}")
-    public Optional<student> getStudentById(@PathVariable Long id) {
+    public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
     // Update Student
     @PutMapping("/update/{id}")
-    public student updateStudent(@PathVariable Long id,
-                                 @RequestBody student student) {
+    public Student updateStudent(@PathVariable Long id,
+                                 @RequestBody Student student) {
         return studentService.updateStudent(id, student);
     }
 

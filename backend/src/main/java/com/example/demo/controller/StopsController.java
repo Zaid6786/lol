@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.stops;
+import com.example.demo.models.Stops;
 import com.example.demo.service.StopsService;
 
 @RestController
@@ -19,26 +19,26 @@ public class StopsController {
 
     // Save Stop
     @PostMapping("/save")
-    public stops saveStop(@RequestBody stops stop) {
+    public Stops saveStop(@RequestBody Stops stop) {
         return stopsService.saveStop(stop);
     }
 
     // Get All Stops
     @GetMapping("/getall")
-    public List<stops> getAllStops() {
+    public List<Stops> getAllStops() {
         return stopsService.getAllStops();
     }
 
     // Get Stop By Id
     @GetMapping("/get/{id}")
-    public Optional<stops> getStopById(@PathVariable Long id) {
+    public Optional<Stops> getStopById(@PathVariable Long id) {
         return stopsService.getStopById(id);
     }
 
     // Update Stop
     @PutMapping("/update/{id}")
-    public stops updateStop(@PathVariable Long id,
-                            @RequestBody stops stop) {
+    public Stops updateStop(@PathVariable Long id,
+                            @RequestBody Stops stop) {
         return stopsService.updateStop(id, stop);
     }
 

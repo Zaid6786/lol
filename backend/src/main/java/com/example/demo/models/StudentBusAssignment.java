@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "student_bus_assignment")
-public class Student_Bus_Assignment {
+public class StudentBusAssignment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +38,11 @@ public class Student_Bus_Assignment {
     private LocalDateTime createdAt;
 
     // Default Constructor
-    public Student_Bus_Assignment() {
+    public StudentBusAssignment() {
     }
 
     // Parameterized Constructor
-    public Student_Bus_Assignment(Long assignmentId, Long studentId, Long busId,
+    public StudentBusAssignment(Long assignmentId, Long studentId, Long busId,
             Long routeId, LocalDate assignedDate,
             Boolean isActive, LocalDateTime createdAt) {
 
@@ -115,7 +115,7 @@ public class Student_Bus_Assignment {
 
     @Override
     public String toString() {
-        return "Student_Bus_Assignment{" +
+        return "StudentBusAssignment{" +
                 "assignmentId=" + assignmentId +
                 ", studentId=" + studentId +
                 ", busId=" + busId +

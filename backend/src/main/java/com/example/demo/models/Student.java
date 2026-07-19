@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "student")
-public class student {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,11 +53,11 @@ public class student {
     private LocalDateTime updatedAt;
 
     // Default Constructor
-    public student() {
+    public Student() {
     }
 
     // Parameterized Constructor
-    public student(Long studentId, String name, String rollNo, String email,
+    public Student(Long studentId, String name, String rollNo, String email,
                    String password, String department, Integer year,
                    String busPassNumber, Long routeId, Long busId,
                    String photoUrl, LocalDateTime createdAt,
@@ -184,7 +184,7 @@ public class student {
 
     @Override
     public String toString() {
-        return "student{" +
+        return "Student{" +
                 "studentId=" + studentId +
                 ", name='" + name + '\'' +
                 ", rollNo='" + rollNo + '\'' +
