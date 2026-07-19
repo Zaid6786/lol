@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "bus_delay")
-public class Bus_Delay {
+public class BusDelay {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,11 +39,11 @@ public class Bus_Delay {
     private LocalDateTime resolvedAt;
 
     // Default Constructor
-    public Bus_Delay() {
+    public BusDelay() {
     }
 
     // Parameterized Constructor
-    public Bus_Delay(Long delayId, Long busId, String reason,
+    public BusDelay(Long delayId, Long busId, String reason,
                      Integer delayMinutes, DelayStatus status,
                      LocalDateTime createdAt, LocalDateTime resolvedAt) {
 
@@ -116,7 +116,7 @@ public class Bus_Delay {
 
     @Override
     public String toString() {
-        return "Bus_Delay{" +
+        return "BusDelay{" +
                 "delayId=" + delayId +
                 ", busId=" + busId +
                 ", reason='" + reason + '\'' +

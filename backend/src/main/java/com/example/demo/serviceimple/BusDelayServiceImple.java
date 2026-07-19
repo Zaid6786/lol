@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Bus_Delay;
+import com.example.demo.models.BusDelay;
 import com.example.demo.repository.BusDelayRepository;
 import com.example.demo.service.BusDelayService;
 
@@ -17,24 +17,24 @@ public class BusDelayServiceImple implements BusDelayService {
     private BusDelayRepository busDelayRepository;
 
     @Override
-    public Bus_Delay saveBusDelay(Bus_Delay busDelay) {
+    public BusDelay saveBusDelay(BusDelay busDelay) {
         return busDelayRepository.save(busDelay);
     }
 
     @Override
-    public List<Bus_Delay> getAllBusDelays() {
+    public List<BusDelay> getAllBusDelays() {
         return busDelayRepository.findAll();
     }
 
     @Override
-    public Optional<Bus_Delay> getBusDelayById(Long id) {
+    public Optional<BusDelay> getBusDelayById(Long id) {
         return busDelayRepository.findById(id);
     }
 
     @Override
-    public Bus_Delay updateBusDelay(Long id, Bus_Delay busDelay) {
+    public BusDelay updateBusDelay(Long id, BusDelay busDelay) {
 
-        Bus_Delay existingBusDelay =
+        BusDelay existingBusDelay =
                 busDelayRepository.findById(id).orElse(null);
 
         if (existingBusDelay != null) {

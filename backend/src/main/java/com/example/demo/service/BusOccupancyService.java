@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.Bus_Occupancy;
+import com.example.demo.models.BusOccupancy;
 
 public interface BusOccupancyService {
 
-    Bus_Occupancy saveBusOccupancy(Bus_Occupancy busOccupancy);
+    BusOccupancy saveBusOccupancy(BusOccupancy busOccupancy);
 
-    List<Bus_Occupancy> getAllBusOccupancies();
+    List<BusOccupancy> getAllBusOccupancies();
 
-    Optional<Bus_Occupancy> getBusOccupancyById(Long id);
+    Optional<BusOccupancy> getBusOccupancyById(Long id);
 
-    Bus_Occupancy updateBusOccupancy(Long id, Bus_Occupancy busOccupancy);
+    BusOccupancy updateBusOccupancy(Long id, BusOccupancy busOccupancy);
 
     void deleteBusOccupancy(Long id);
 

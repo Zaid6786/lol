@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "bus_occupancy")
-public class Bus_Occupancy {
+public class BusOccupancy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +38,11 @@ public class Bus_Occupancy {
     private LocalDateTime updatedTime;
 
     // Default Constructor
-    public Bus_Occupancy() {
+    public BusOccupancy() {
     }
 
     // Parameterized Constructor
-    public Bus_Occupancy(Long id, Long busId, Integer occupied,
+    public BusOccupancy(Long id, Long busId, Integer occupied,
             Integer available, BigDecimal occupancyPercentage,
             CrowdLevel crowdLevel, LocalDateTime updatedTime) {
 
@@ -115,7 +115,7 @@ public class Bus_Occupancy {
 
     @Override
     public String toString() {
-        return "Bus_Occupancy{" +
+        return "BusOccupancy{" +
                 "id=" + id +
                 ", busId=" + busId +
                 ", occupied=" + occupied +

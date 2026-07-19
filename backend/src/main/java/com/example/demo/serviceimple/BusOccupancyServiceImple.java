@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.models.Bus_Occupancy;
+import com.example.demo.models.BusOccupancy;
 import com.example.demo.repository.BusOccupancyRepository;
 import com.example.demo.service.BusOccupancyService;
 
@@ -18,27 +18,27 @@ public class BusOccupancyServiceImple implements BusOccupancyService {
 
 
     @Override
-    public Bus_Occupancy saveBusOccupancy(Bus_Occupancy busOccupancy) {
+    public BusOccupancy saveBusOccupancy(BusOccupancy busOccupancy) {
         return busOccupancyRepository.save(busOccupancy);
     }
 
 
     @Override
-    public List<Bus_Occupancy> getAllBusOccupancies() {
+    public List<BusOccupancy> getAllBusOccupancies() {
         return busOccupancyRepository.findAll();
     }
 
 
     @Override
-    public Optional<Bus_Occupancy> getBusOccupancyById(Long id) {
+    public Optional<BusOccupancy> getBusOccupancyById(Long id) {
         return busOccupancyRepository.findById(id);
     }
 
 
     @Override
-    public Bus_Occupancy updateBusOccupancy(Long id, Bus_Occupancy busOccupancy) {
+    public BusOccupancy updateBusOccupancy(Long id, BusOccupancy busOccupancy) {
 
-        Bus_Occupancy existingBusOccupancy = 
+        BusOccupancy existingBusOccupancy = 
                 busOccupancyRepository.findById(id).orElse(null);
 
         if (existingBusOccupancy != null) {

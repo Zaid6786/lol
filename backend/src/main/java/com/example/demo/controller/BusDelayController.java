@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.Bus_Delay;
+import com.example.demo.models.BusDelay;
 import com.example.demo.service.BusDelayService;
 
 @RestController
@@ -19,26 +19,26 @@ public class BusDelayController {
 
     // Save Bus Delay
     @PostMapping("/save")
-    public Bus_Delay saveBusDelay(@RequestBody Bus_Delay busDelay) {
+    public BusDelay saveBusDelay(@RequestBody BusDelay busDelay) {
         return busDelayService.saveBusDelay(busDelay);
     }
 
     // Get All Bus Delays
     @GetMapping("/getall")
-    public List<Bus_Delay> getAllBusDelays() {
+    public List<BusDelay> getAllBusDelays() {
         return busDelayService.getAllBusDelays();
     }
 
     // Get Bus Delay By Id
     @GetMapping("/get/{id}")
-    public Optional<Bus_Delay> getBusDelayById(@PathVariable Long id) {
+    public Optional<BusDelay> getBusDelayById(@PathVariable Long id) {
         return busDelayService.getBusDelayById(id);
     }
 
     // Update Bus Delay
     @PutMapping("/update/{id}")
-    public Bus_Delay updateBusDelay(@PathVariable Long id,
-                                    @RequestBody Bus_Delay busDelay) {
+    public BusDelay updateBusDelay(@PathVariable Long id,
+                                    @RequestBody BusDelay busDelay) {
 
         return busDelayService.updateBusDelay(id, busDelay);
     }
