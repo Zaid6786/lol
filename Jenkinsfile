@@ -50,36 +50,23 @@ pipeline {
     post {
     success {
         emailext(
-            subject: "✅ Jenkins Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: """Hello Team,
-
-Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.
-You can check the details here: ${env.BUILD_URL}
-
-Regards,
-Jenkins
-""",
+            subject: "✅ Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Build succeeded. See details: ${env.BUILD_URL}",
             to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
-            from: "mohammedzaidfs@example.com",
-            replyTo: "mohammedzaidfs@example.com"
+            from: "yourgmail@example.com",
+            replyTo: "yourgmail@example.com"
         )
     }
     failure {
         emailext(
-            subject: "❌ Jenkins Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: """Hello Team,
-
-Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.
-You can check the logs here: ${env.BUILD_URL}
-
-Regards,
-Jenkins
-""",
+            subject: "❌ Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Build failed. See logs: ${env.BUILD_URL}",
             to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
-            from: "mohammedzaidfs@example.com",
-            replyTo: "mohammedzaidfs@example.com"
+            from: "yourgmail@example.com",
+            replyTo: "yourgmail@example.com"
         )
     }
 }
+
 
 }
