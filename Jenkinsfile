@@ -48,19 +48,38 @@ pipeline {
 
     // 👇 Add this section
     post {
-        success {
-            emailext(
-                subject: "✅ Jenkins Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.\nCheck details at: ${env.BUILD_URL}",
-                to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com"
-            )
-        }
-        failure {
-            emailext(
-                subject: "❌ Jenkins Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.\nCheck logs at: ${env.BUILD_URL}",
-                to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com"
-            )
-        }
+    success {
+        emailext(
+            subject: "✅ Jenkins Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """Hello Team,
+
+Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.
+You can check the details here: ${env.BUILD_URL}
+
+Regards,
+Jenkins
+""",
+            to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
+            from: "mohammedzaidfs@example.com",
+            replyTo: "mohammedzaidfs@example.com"
+        )
     }
+    failure {
+        emailext(
+            subject: "❌ Jenkins Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: """Hello Team,
+
+Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.
+You can check the logs here: ${env.BUILD_URL}
+
+Regards,
+Jenkins
+""",
+            to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
+            from: "mohammedzaidfs@example.com",
+            replyTo: "mohammedzaidfs@example.com"
+        )
+    }
+}
+
 }
