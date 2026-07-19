@@ -45,4 +45,22 @@ pipeline {
             }
         }
     }
+
+    // 👇 Add this section
+    post {
+        success {
+            emailext(
+                subject: "✅ Jenkins Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Good news! The build for ${env.JOB_NAME} #${env.BUILD_NUMBER} succeeded.\nCheck details at: ${env.BUILD_URL}",
+                to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com"
+            )
+        }
+        failure {
+            emailext(
+                subject: "❌ Jenkins Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Unfortunately, the build for ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.\nCheck logs at: ${env.BUILD_URL}",
+                to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com"
+            )
+        }
+    }
 }
