@@ -44,29 +44,12 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Nexus') {
+            steps {
+                dir('backend') {   // Run Maven inside backend folder
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
-
-    // 👇 Add this section
-    post {
-    success {
-        emailext(
-            subject: "✅ Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: "Build succeeded. See details: ${env.BUILD_URL}",
-            to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
-            from: "yourgmail@example.com",
-            replyTo: "yourgmail@example.com"
-        )
-    }
-    failure {
-        emailext(
-            subject: "❌ Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: "Build failed. See logs: ${env.BUILD_URL}",
-            to: "mohammedzaidfs@gmail.com,sumasreedonka@gmail.com,karunduvvarapu@gmail.com,praveenlothu72@gmail.com,paruvadathriveni2006@gmail.com,tharunbattina@gmail.com",
-            from: "yourgmail@example.com",
-            replyTo: "yourgmail@example.com"
-        )
-    }
-}
-
-
 }
