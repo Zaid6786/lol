@@ -29,7 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<sonar.projectKey>hi</sonar.projectKey>
-		<sonar.host.url>http://16.113.14.8:9000</sonar.host.url>
+		<sonar.host.url>http://13.235.215.199:9000</sonar.host.url>
 		<sonar.login>sqa_8b5059f596df0e1ed2ba0adf6578d6ca7bd00959</sonar.login>
 	</properties>
 	<dependencies>
