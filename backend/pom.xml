@@ -29,8 +29,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<sonar.projectKey>hello</sonar.projectKey>
-		<sonar.host.url>http://18.139.114.148:9000/</sonar.host.url>
-		<sonar.login>sqa_8a7aa69b90af6c2b416259cb67dd5243603b1644</sonar.login>
+		<sonar.host.url>http://65.2.182.184:9000/</sonar.host.url>
+		<sonar.login>sqa_5a6af71bf85903c272ad1871f4eadfce40d93064</sonar.login>
 	</properties>
 	<dependencies>
 		<dependency>
