@@ -23,7 +23,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_API_KEY=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
       - SPRING_BOOT_BASE_URL=http://backend:8085
     depends_on:
       - backend
