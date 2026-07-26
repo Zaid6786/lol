@@ -14,6 +14,8 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine
 # Copy compiled files from the build stage to Nginx html directory
 COPY --from=build /app/dist/bus-tracker-app /usr/share/nginx/html
+# Copy custom Nginx configuration for Angular routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
