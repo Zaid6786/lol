@@ -22,6 +22,18 @@ public class DriverServiceImple implements DriverService {
     }
 
     @Override
+    public Driver login(String username, String password) {
+        Optional<Driver> driverOpt = driverRepository.findByUsername(username);
+        if (driverOpt.isPresent()) {
+            Driver driver = driverOpt.get();
+            if (driver.getPassword().equals(password)) {
+                return driver;
+            }
+        }
+        throw new RuntimeException("Invalid username or password");
+    }
+
+    @Override
     public List<Driver> getAllDrivers() {
         return driverRepository.findAll();
     }
@@ -41,6 +53,8 @@ public class DriverServiceImple implements DriverService {
             existingDriver.setName(driver.getName());
             existingDriver.setPhone(driver.getPhone());
             existingDriver.setLicense(driver.getLicense());
+            existingDriver.setUsername(driver.getUsername());
+            existingDriver.setPassword(driver.getPassword());
             existingDriver.setStatus(driver.getStatus());
 
             return driverRepository.save(existingDriver);

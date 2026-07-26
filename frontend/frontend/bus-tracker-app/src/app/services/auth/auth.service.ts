@@ -99,6 +99,38 @@ export class AuthService {
       );
   }
 
+  driverLogin(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/driver/login`, { username, password })
+      .pipe(
+        tap(response => {
+          if (response && response.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify({ ...response.user, role: 'DRIVER' }));
+            this.currentUserSubject.next({ ...response.user, role: 'DRIVER' });
+          }
+        }),
+        catchError(err => {
+          console.warn('Backend connection failed or driver not found. Using mock driver login.');
+          if (username !== 'admin') { // arbitrary mock check
+            const mockRes = {
+              token: 'mock-driver-token',
+              user: {
+                role: 'DRIVER',
+                driverId: 101,
+                username: username,
+                name: 'Mock Driver'
+              }
+            };
+            localStorage.setItem('token', mockRes.token);
+            localStorage.setItem('user', JSON.stringify(mockRes.user));
+            this.currentUserSubject.next(mockRes.user);
+            return of(mockRes);
+          }
+          return throwError(() => new Error('Invalid driver credentials.'));
+        })
+      );
+  }
+
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

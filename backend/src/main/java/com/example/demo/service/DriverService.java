@@ -9,6 +9,8 @@ public interface DriverService {
 
     Driver saveDriver(Driver driver);
 
+    Driver login(String username, String password);
+
     List<Driver> getAllDrivers();
 
     Optional<Driver> getDriverById(Long id);

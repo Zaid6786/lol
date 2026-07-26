@@ -15,8 +15,9 @@
     <thead>
       <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
         <th style="padding: 12px 10px;">Driver ID</th>
-        <th style="padding: 12px 10px;">Name</th>
-        <th style="padding: 12px 10px;">Contact</th>
+    <th style="padding: 12px 10px;">Name</th>
+    <th style="padding: 12px 10px;">Username</th>
+    <th style="padding: 12px 10px;">Contact</th>
         <th style="padding: 12px 10px;">Status</th>
         <th style="padding: 12px 10px; text-align: right;">Actions</th>
       </tr>
@@ -26,9 +27,10 @@
         <td colspan="5" style="padding: 20px; text-align: center; color: var(--text-muted);">No drivers found.</td>
       </tr>
       <tr *ngFor="let driver of filteredDrivers" style="border-bottom: 1px solid var(--border-color);">
-        <td style="padding: 15px 10px; font-weight: 500;">D-{{ driver.driverId }}</td>
-        <td style="padding: 15px 10px;">{{ driver.name }}</td>
-        <td style="padding: 15px 10px;">{{ driver.phone }}</td>
+      <td style="padding: 15px 10px; font-weight: 500;">D-{{ driver.driverId }}</td>
+      <td style="padding: 15px 10px;">{{ driver.name }}</td>
+      <td style="padding: 15px 10px;">{{ driver.username || 'N/A' }}</td>
+      <td style="padding: 15px 10px;">{{ driver.phone }}</td>
         <td style="padding: 15px 10px;">
           <span [ngStyle]="{'color': driver.status === 'AVAILABLE' ? 'var(--color-accent)' : 'var(--color-warning)'}" style="font-weight: 600;">
             {{ driver.status }}
@@ -56,6 +58,21 @@
     <div style="margin-bottom: 15px;">
       <label style="display: block; margin-bottom: 5px; color: var(--text-main);">Phone Number</label>
       <input type="text" class="input-field" [(ngModel)]="currentDriver.phone">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; color: var(--text-main);">License Number</label>
+      <input type="text" class="input-field" [(ngModel)]="currentDriver.license">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; color: var(--text-main);">Username (For Driver Login)</label>
+      <input type="text" class="input-field" [(ngModel)]="currentDriver.username">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; color: var(--text-main);">Password</label>
+      <input type="password" class="input-field" [(ngModel)]="currentDriver.password">
     </div>
 
     <div style="margin-bottom: 25px;">

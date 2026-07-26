@@ -16,6 +16,9 @@ export class ManageDriverComponent implements OnInit {
     driverId: null,
     name: '',
     phone: '',
+    license: '',
+    username: '',
+    password: '',
     status: 'AVAILABLE'
   };
 
@@ -46,7 +49,7 @@ export class ManageDriverComponent implements OnInit {
       this.currentDriver = { ...driver };
     } else {
       this.isEditing = false;
-      this.currentDriver = { driverId: null, name: '', phone: '', status: 'AVAILABLE' };
+      this.currentDriver = { driverId: null, name: '', phone: '', license: '', username: '', password: '', status: 'AVAILABLE' };
     }
     this.showModal = true;
   }

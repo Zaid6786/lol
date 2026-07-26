@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bus-tracker-backend
+    ports:
+      - "8085:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://bus-tracking.chsmscmw6yky.ap-south-1.rds.amazonaws.com:3306/bustracking
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=V6h88zP6V7k9f5c4Q2
+    networks:
+      - bus-network
+
+  genai:
+    build:
+      context: ./genai_service
+      dockerfile: Dockerfile
+    container_name: bus-tracker-genai
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - SPRING_BOOT_BASE_URL=http://backend:8085
+    depends_on:
+      - backend
+    networks:
+      - bus-network
+
+  frontend:
+    build:
+      context: ./frontend/frontend/bus-tracker-app
+      dockerfile: Dockerfile
+    container_name: bus-tracker-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+      - genai
+    networks:
+      - bus-network
+
+networks:
+  bus-network:
+    driver: bridge
