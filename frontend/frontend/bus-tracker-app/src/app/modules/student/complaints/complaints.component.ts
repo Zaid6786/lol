@@ -23,7 +23,7 @@ export class ComplaintsComponent implements OnInit {
     this.authService.currentUser$.subscribe(user => {
       if (user && user.studentId) {
         // Mock a numeric ID based on string or use direct mapping
-        this.studentId = parseInt(user.studentId.replace(/\D/g, '')) || 1; 
+        this.studentId = parseInt(String(user.studentId).replace(/\D/g, '')) || user.studentId; 
       }
     });
   }

@@ -19,7 +19,7 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     this.authService.currentUser$.subscribe(user => {
       if (user && user.studentId) {
-        this.studentId = parseInt(user.studentId.replace(/\D/g, '')) || 1;
+        this.studentId = parseInt(String(user.studentId).replace(/\D/g, '')) || user.studentId;
       }
     });
     this.loadNotifications();

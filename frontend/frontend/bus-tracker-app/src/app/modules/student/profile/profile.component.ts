@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.authService.currentUser$.subscribe(user => {
       if (user && user.studentId) {
-        this.studentId = parseInt(user.studentId.replace(/\D/g, '')) || 1;
+        this.studentId = parseInt(String(user.studentId).replace(/\D/g, '')) || user.studentId;
       }
     });
 
@@ -27,13 +27,13 @@ export class ProfileComponent implements OnInit {
       if (data) {
         this.student = data;
       } else {
-        // Fallback mock
         this.student = {
-          name: 'Alice Smith',
-          rollNo: 'STU-2024-001',
-          email: 'alice@example.edu',
-          phone: '+1 234 567 8901',
-          route: 'Route A'
+          name: 'Not Found',
+          rollNo: '-',
+          email: '-',
+          department: '-',
+          routeId: '-',
+          busPassNumber: '-'
         };
       }
     });
