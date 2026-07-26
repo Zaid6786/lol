@@ -8,11 +8,11 @@ interface ChatMessage {
 }
 
 @Component({
-  selector: 'app-chatbot',
+  selector: 'app-global-chatbot',
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.scss']
 })
-export class ChatbotComponent implements AfterViewChecked {
+export class GlobalChatbotComponent implements AfterViewChecked {
   @ViewChild('chatScroll') private chatScrollContainer!: ElementRef;
   
   isOpen = false;

@@ -8,14 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { GlobalChatbotComponent } from './components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ChatbotComponent
+    GlobalChatbotComponent
   ],
   imports: [
     BrowserModule,
