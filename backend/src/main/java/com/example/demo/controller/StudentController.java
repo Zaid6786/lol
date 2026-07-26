@@ -17,6 +17,34 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private com.example.demo.repository.StudentRepository studentRepository;
+
+    // Login Student
+    @PostMapping("/login")
+    public java.util.Map<String, Object> loginStudent(@RequestBody java.util.Map<String, String> credentials) {
+        String identifier = credentials.get("email");
+        String password = credentials.get("password");
+        
+        Optional<Student> studentOpt = studentRepository.findByEmail(identifier);
+        if (!studentOpt.isPresent()) {
+            studentOpt = studentRepository.findByRollNo(identifier);
+        }
+        
+        if (studentOpt.isPresent() && studentOpt.get().getPassword().equals(password)) {
+            java.util.Map<String, Object> response = new java.util.HashMap<>();
+            response.put("token", "rds-token-student-" + studentOpt.get().getStudentId());
+            java.util.Map<String, Object> user = new java.util.HashMap<>();
+            user.put("role", "STUDENT");
+            user.put("studentId", studentOpt.get().getStudentId());
+            user.put("username", studentOpt.get().getName());
+            user.put("email", studentOpt.get().getEmail());
+            response.put("user", user);
+            return response;
+        }
+        throw new RuntimeException("Invalid student credentials");
+    }
+
     // Save Student
     @PostMapping("/save")
     public Student saveStudent(@RequestBody Student student) {

@@ -17,6 +17,29 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private com.example.demo.repository.AdminRepository adminRepository;
+
+    // Login Admin
+    @PostMapping("/login")
+    public java.util.Map<String, Object> loginAdmin(@RequestBody java.util.Map<String, String> credentials) {
+        String username = credentials.get("username");
+        String password = credentials.get("password");
+        Optional<Admin> adminOpt = adminRepository.findByUsername(username);
+        
+        if (adminOpt.isPresent() && adminOpt.get().getPassword().equals(password)) {
+            java.util.Map<String, Object> response = new java.util.HashMap<>();
+            response.put("token", "rds-token-admin-" + adminOpt.get().getAdminId());
+            java.util.Map<String, Object> user = new java.util.HashMap<>();
+            user.put("role", "ADMIN");
+            user.put("username", adminOpt.get().getUsername());
+            user.put("adminId", adminOpt.get().getAdminId());
+            response.put("user", user);
+            return response;
+        }
+        throw new RuntimeException("Invalid admin credentials");
+    }
+
     // Save Admin
     @PostMapping("/save")
     public Admin saveAdmin(@RequestBody Admin admin) {

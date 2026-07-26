@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private apiUrl = 'http://localhost:8085';
-  private studentApiUrl = 'http://localhost:8085/student'; // Kept for reference, but use apiUrl mostly
+  private apiUrl = environment.apiUrl;
+  private studentApiUrl = `${environment.apiUrl}/student`; // Kept for reference
 
   constructor(private http: HttpClient) { }
 
@@ -121,62 +122,25 @@ export class AdminService {
   // --- Student APIs ---
   getAllStudents(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/student/getall`).pipe(
-      catchError(err => {
-        console.warn('Backend connection failed. Using mock students.');
-        const mockStr = localStorage.getItem('mock_students');
-        const mockList = mockStr ? JSON.parse(mockStr) : [];
-        return of(mockList);
-      })
+      catchError(this.handleError<any[]>('getAllStudents', []))
     );
   }
 
   createStudent(student: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/student/save`, student).pipe(
-      catchError(err => {
-        console.warn('Backend connection failed. Mocking createStudent.');
-        const mockStr = localStorage.getItem('mock_students');
-        const mockList = mockStr ? JSON.parse(mockStr) : [];
-
-        // Generate mock studentId
-        student.studentId = student.studentId || mockList.length + 100;
-        student.rollNo = student.rollNo || student.email || `STU${student.studentId}`;
-        student.password = student.password || 'password';
-
-        mockList.push(student);
-        localStorage.setItem('mock_students', JSON.stringify(mockList));
-        return of(student);
-      })
+      catchError(this.handleError<any>('createStudent'))
     );
   }
 
   updateStudent(id: number, student: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/student/update/${id}`, student).pipe(
-      catchError(err => {
-        console.warn('Backend connection failed. Mocking updateStudent.');
-        const mockStr = localStorage.getItem('mock_students');
-        const mockList = mockStr ? JSON.parse(mockStr) : [];
-
-        const idx = mockList.findIndex((s: any) => s.studentId === id || s.rollNo === String(id));
-        if (idx !== -1) {
-          mockList[idx] = { ...mockList[idx], ...student };
-          localStorage.setItem('mock_students', JSON.stringify(mockList));
-        }
-        return of(student);
-      })
+      catchError(this.handleError<any>('updateStudent'))
     );
   }
 
   deleteStudent(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/student/delete/${id}`).pipe(
-      catchError(err => {
-        console.warn('Backend connection failed. Mocking deleteStudent.');
-        const mockStr = localStorage.getItem('mock_students');
-        const mockList = mockStr ? JSON.parse(mockStr) : [];
-
-        const updatedList = mockList.filter((s: any) => s.studentId !== id && s.rollNo !== String(id));
-        localStorage.setItem('mock_students', JSON.stringify(updatedList));
-        return of(null);
-      })
+      catchError(this.handleError<any>('deleteStudent'))
     );
   }
 

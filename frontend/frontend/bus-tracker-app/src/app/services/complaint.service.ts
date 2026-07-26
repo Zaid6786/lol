@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Complaint {
   complaintId?: number;
@@ -19,7 +20,7 @@ export interface Complaint {
 })
 export class ComplaintService {
 
-  private apiUrl = 'http://localhost:8085';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

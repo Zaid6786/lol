@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8085';
+  private apiUrl = environment.apiUrl;
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
@@ -39,14 +40,9 @@ export class AuthService {
             this.currentUserSubject.next(response.user);
           }
         }),
-        // Mock fallback for UI demonstration when backend is down
         catchError(err => {
-          console.warn('Backend connection failed. Using mock admin login.');
-          const mockRes = { token: 'mock-admin-token', user: { role: 'ADMIN', username } };
-          localStorage.setItem('token', mockRes.token);
-          localStorage.setItem('user', JSON.stringify(mockRes.user));
-          this.currentUserSubject.next(mockRes.user);
-          return of(mockRes);
+          console.error('Admin login failed:', err);
+          return throwError(() => new Error('Invalid admin credentials'));
         })
       );
   }
@@ -62,39 +58,9 @@ export class AuthService {
             this.currentUserSubject.next(response.user);
           }
         }),
-        // Mock fallback for UI demonstration when backend is down
         catchError(err => {
-          console.warn('Backend connection failed. Using mock student login.');
-          const mockStudentsStr = localStorage.getItem('mock_students');
-          const mockStudents = mockStudentsStr ? JSON.parse(mockStudentsStr) : [];
-          
-          const matchedStudent = mockStudents.find((s: any) => 
-            (s.email === studentId || 
-             s.rollNo === studentId || 
-             `STU-${s.studentId}` === studentId ||
-             `STU${s.studentId}` === studentId ||
-             s.name === studentId ||
-             String(s.studentId) === studentId) &&
-            s.password === password
-          );
-          
-          if (!matchedStudent) {
-            return throwError(() => new Error('Invalid credentials or student not registered by administrator.'));
-          }
-          
-          const mockRes = { 
-            token: 'mock-student-token', 
-            user: { 
-              role: 'STUDENT', 
-              studentId: matchedStudent.studentId, 
-              username: matchedStudent.name,
-              email: matchedStudent.email
-            } 
-          };
-          localStorage.setItem('token', mockRes.token);
-          localStorage.setItem('user', JSON.stringify(mockRes.user));
-          this.currentUserSubject.next(mockRes.user);
-          return of(mockRes);
+          console.error('Student login failed:', err);
+          return throwError(() => new Error('Invalid student credentials'));
         })
       );
   }
@@ -110,23 +76,8 @@ export class AuthService {
           }
         }),
         catchError(err => {
-          console.warn('Backend connection failed or driver not found. Using mock driver login.');
-          if (username !== 'admin') { // arbitrary mock check
-            const mockRes = {
-              token: 'mock-driver-token',
-              user: {
-                role: 'DRIVER',
-                driverId: 101,
-                username: username,
-                name: 'Mock Driver'
-              }
-            };
-            localStorage.setItem('token', mockRes.token);
-            localStorage.setItem('user', JSON.stringify(mockRes.user));
-            this.currentUserSubject.next(mockRes.user);
-            return of(mockRes);
-          }
-          return throwError(() => new Error('Invalid driver credentials.'));
+          console.error('Driver login failed:', err);
+          return throwError(() => new Error('Invalid driver credentials'));
         })
       );
   }
