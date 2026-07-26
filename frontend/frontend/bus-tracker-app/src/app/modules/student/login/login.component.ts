@@ -27,5 +27,10 @@ export class LoginComponent {
       });
     }
   }
+
+  navigateToAdmin(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/admin/login']);
+  }
 }
 

@@ -20,5 +20,10 @@ export class LoginComponent {
       });
     }
   }
+
+  navigateToStudent(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/student/login']);
+  }
 }
 
