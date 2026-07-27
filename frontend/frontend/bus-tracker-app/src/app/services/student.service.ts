@@ -8,13 +8,15 @@ import { Attendance } from '../models/attendance';
 import { Notification } from '../models/notification';
 import { Complaint } from '../models/complaint';
 import { ChangePassword } from '../models/change-password';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  private baseUrl = "http://localhost:8085/student";
+  private baseUrl = `${environment.apiUrl}/student`;
 
   constructor(private http: HttpClient) { }
 

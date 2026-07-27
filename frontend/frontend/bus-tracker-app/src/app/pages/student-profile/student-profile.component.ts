@@ -7,6 +7,8 @@ import { ToastService } from '../../services/toast.service';
 
 import { Route } from '../../models/route';
 import { Bus } from '../../models/bus';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-student-profile',
@@ -82,7 +84,7 @@ export class StudentProfileComponent implements OnInit {
         if (data.photoUrl) {
 
           this.imagePreview =
-            "http://localhost:8085/uploads/" + data.photoUrl;
+            `${environment.apiUrl}/uploads/` + data.photoUrl;
 
         }
 
@@ -167,7 +169,7 @@ export class StudentProfileComponent implements OnInit {
             next: (fileName) => {
 
               this.imagePreview =
-                "http://localhost:8085/uploads/" + fileName;
+                `${environment.apiUrl}/uploads/` + fileName;
 
             }
 

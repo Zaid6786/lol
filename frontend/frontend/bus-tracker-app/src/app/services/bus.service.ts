@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Bus } from '../models/bus';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusService {
 
-  private baseUrl = 'http://localhost:8085/bus';
+  private baseUrl = `${environment.apiUrl}/bus`;
 
   constructor(private http: HttpClient) { }
 

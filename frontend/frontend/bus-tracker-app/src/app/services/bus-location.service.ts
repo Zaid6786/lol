@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { BusLocation } from 'src/app/models/bus-location';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
     providedIn: 'root'
 })
 export class BusLocationService {
 
-    private apiUrl = 'http://localhost:8085/buslocation';
+    private apiUrl = `${environment.apiUrl}/buslocation`;
 
     constructor(private http: HttpClient) { }
 

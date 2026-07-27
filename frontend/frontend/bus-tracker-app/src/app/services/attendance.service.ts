@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Attendance } from '../models/attendance';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttendanceService {
 
-  private baseUrl = 'http://localhost:8085/attendance';
+  private baseUrl = `${environment.apiUrl}/attendance`;
 
   constructor(private http: HttpClient) { }
 

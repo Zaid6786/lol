@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Stop } from '../models/stop';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StopService {
 
-  private baseUrl = 'http://localhost:8085/stops';
+  private baseUrl = `${environment.apiUrl}/stops`;
 
   constructor(private http: HttpClient) { }
 

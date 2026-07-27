@@ -7,13 +7,15 @@ import { Dashboard } from '../models/dashboard';
 import { ForgotPassword } from '../models/forgot-password';
 import { VerifyOtp } from '../models/verify-otp';
 import { ResetPassword } from '../models/reset-password';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  private baseUrl = 'http://localhost:8085/admin';
+  private baseUrl = `${environment.apiUrl}/admin`;
 
   constructor(private http: HttpClient) { }
 

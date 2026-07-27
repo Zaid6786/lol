@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Route } from '../models/route';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class RouteService {
 
-    private baseUrl = 'http://localhost:8085/route';
+    private baseUrl = `${environment.apiUrl}/route`;
 
     constructor(private http: HttpClient) { }
 

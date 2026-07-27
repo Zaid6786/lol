@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-college-logo',
@@ -28,7 +30,7 @@ export class CollegeLogoComponent implements OnInit {
 
   loadLogo(): void {
 
-    this.http.get<any>('http://localhost:8085/settings/get')
+    this.http.get<any>(`${environment.apiUrl}/settings/get`)
 
       .subscribe({
 
@@ -37,7 +39,7 @@ export class CollegeLogoComponent implements OnInit {
           if (res.logoUrl) {
 
             this.logoPreview =
-              'http://localhost:8085' +
+              `${environment.apiUrl}` +
               res.logoUrl +
               '?t=' +
               new Date().getTime();
@@ -94,7 +96,7 @@ export class CollegeLogoComponent implements OnInit {
     formData.append('file', this.selectedFile);
 
     this.http.post<any>(
-      'http://localhost:8085/settings/upload-logo',
+      `${environment.apiUrl}/settings/upload-logo`,
       formData
     )
 
@@ -103,7 +105,7 @@ export class CollegeLogoComponent implements OnInit {
         next: (res) => {
 
           this.logoPreview =
-            'http://localhost:8085' +
+            `${environment.apiUrl}` +
             res.logoUrl +
             '?t=' +
             new Date().getTime();

@@ -66,7 +66,7 @@ export class GlobalChatbotComponent implements AfterViewChecked {
     };
     
     // Determine the GenAI API URL to use. If undefined, default to 8000.
-    const genaiApiUrl = (environment as any).genaiUrl || 'http://localhost:8000';
+    const genaiApiUrl = (environment as any).genaiUrl || `${environment.genaiUrl}`;
 
     this.http.post<any>(`${genaiApiUrl}/api/v1/student-bus-chat`, payload).subscribe({
       next: (response) => {

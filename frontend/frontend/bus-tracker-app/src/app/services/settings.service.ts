@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 export interface Settings {
 
@@ -24,7 +26,7 @@ export interface Settings {
 })
 export class SettingsService {
 
-    private apiUrl = 'http://localhost:8085/settings';
+    private apiUrl = `${environment.apiUrl}/settings`;
 
     private themeSubject = new BehaviorSubject<string>('light');
 

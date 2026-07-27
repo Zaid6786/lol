@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BusOccupancy } from '../models/bus-occupancy';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class BusOccupancyService {
 
-    private apiUrl = 'http://localhost:8085/busoccupancy';
+    private apiUrl = `${environment.apiUrl}/busoccupancy`;
 
     constructor(private http: HttpClient) { }
 
