@@ -25,7 +25,7 @@ import com.example.demo.dto.ResetPasswordDTO;
 
 @RestController
 @RequestMapping("/student")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class StudentController {
 
 	@Autowired

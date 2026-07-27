@@ -11,7 +11,7 @@ import com.example.demo.service.RealTimeTrackingService;
 
 @RestController
 @RequestMapping("/realtimetracking")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class RealTimeTrackingController {
 
 	@Autowired

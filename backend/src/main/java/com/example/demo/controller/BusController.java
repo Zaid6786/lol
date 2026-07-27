@@ -11,7 +11,7 @@ import com.example.demo.service.BusService;
 
 @RestController
 @RequestMapping("/bus")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class BusController {
 
 	@Autowired

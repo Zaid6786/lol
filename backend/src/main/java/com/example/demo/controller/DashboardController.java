@@ -11,7 +11,7 @@ import com.example.demo.service.DashboardService;
 
 @RestController
 @RequestMapping("/dashboard")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class DashboardController {
 
 	@Autowired
