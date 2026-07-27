@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.FleetRouting;
+import com.example.demo.models.fleetrouting;
 import com.example.demo.service.FleetRoutingService;
 
 @RestController
@@ -19,26 +19,26 @@ public class FleetRoutingController {
 
     // Save Fleet Routing
     @PostMapping("/save")
-    public FleetRouting saveFleetRouting(@RequestBody FleetRouting fleetRouting) {
+    public fleetrouting saveFleetRouting(@RequestBody fleetrouting fleetRouting) {
         return fleetRoutingService.saveFleetRouting(fleetRouting);
     }
 
     // Get All Fleet Routings
     @GetMapping("/getall")
-    public List<FleetRouting> getAllFleetRoutings() {
+    public List<fleetrouting> getAllFleetRoutings() {
         return fleetRoutingService.getAllFleetRoutings();
     }
 
     // Get Fleet Routing By Id
     @GetMapping("/get/{id}")
-    public Optional<FleetRouting> getFleetRoutingById(@PathVariable Long id) {
+    public Optional<fleetrouting> getFleetRoutingById(@PathVariable Long id) {
         return fleetRoutingService.getFleetRoutingById(id);
     }
 
     // Update Fleet Routing
     @PutMapping("/update/{id}")
-    public FleetRouting updateFleetRouting(@PathVariable Long id,
-                                            @RequestBody FleetRouting fleetRouting) {
+    public fleetrouting updateFleetRouting(@PathVariable Long id,
+                                            @RequestBody fleetrouting fleetRouting) {
 
         return fleetRoutingService.updateFleetRouting(id, fleetRouting);
     }

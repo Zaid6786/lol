@@ -9,51 +9,76 @@ import org.springframework.stereotype.Service;
 import com.example.demo.models.Attendance;
 import com.example.demo.repository.AttendanceRepository;
 import com.example.demo.service.AttendanceService;
+import com.example.demo.service.BusOccupancyService;
 
 @Service
 public class AttendanceServiceImple implements AttendanceService {
 
-    @Autowired
-    private AttendanceRepository attendanceRepository;
+	@Autowired
+	private AttendanceRepository attendanceRepository;
 
-    @Override
-    public Attendance saveAttendance(Attendance attendance) {
-        return attendanceRepository.save(attendance);
-    }
+	@Autowired
+	private BusOccupancyService busOccupancyService;
 
-    @Override
-    public List<Attendance> getAllAttendances() {
-        return attendanceRepository.findAll();
-    }
+	@Override
+	public Attendance saveAttendance(Attendance attendance) {
 
-    @Override
-    public Optional<Attendance> getAttendanceById(Long id) {
-        return attendanceRepository.findById(id);
-    }
+		Attendance savedAttendance = attendanceRepository.save(attendance);
 
-    @Override
-    public Attendance updateAttendance(Long id, Attendance attendance) {
+		// Recalculate Bus Occupancy
+		busOccupancyService.calculateBusOccupancy(savedAttendance.getBusId());
 
-        Attendance existingAttendance =
-                attendanceRepository.findById(id).orElse(null);
+		return savedAttendance;
+	}
 
-        if (existingAttendance != null) {
+	@Override
+	public List<Attendance> getAllAttendances() {
+		return attendanceRepository.findAll();
+	}
 
-            existingAttendance.setStudentId(attendance.getStudentId());
-            existingAttendance.setBusId(attendance.getBusId());
-            existingAttendance.setScanTime(attendance.getScanTime());
-            existingAttendance.setScanType(attendance.getScanType());
-            existingAttendance.setCreatedAt(attendance.getCreatedAt());
+	@Override
+	public Optional<Attendance> getAttendanceById(Long id) {
+		return attendanceRepository.findById(id);
+	}
 
-            return attendanceRepository.save(existingAttendance);
-        }
+	@Override
+	public Attendance updateAttendance(Long id, Attendance attendance) {
 
-        return null;
-    }
+		Attendance existingAttendance = attendanceRepository.findById(id).orElse(null);
 
-    @Override
-    public void deleteAttendance(Long id) {
-        attendanceRepository.deleteById(id);
-    }
+		if (existingAttendance != null) {
+
+			existingAttendance.setStudentId(attendance.getStudentId());
+			existingAttendance.setBusId(attendance.getBusId());
+			existingAttendance.setScanTime(attendance.getScanTime());
+			existingAttendance.setScanType(attendance.getScanType());
+			existingAttendance.setCreatedAt(attendance.getCreatedAt());
+
+			Attendance updatedAttendance = attendanceRepository.save(existingAttendance);
+
+			// Recalculate Bus Occupancy
+			busOccupancyService.calculateBusOccupancy(updatedAttendance.getBusId());
+
+			return updatedAttendance;
+		}
+
+		return null;
+	}
+
+	@Override
+	public void deleteAttendance(Long id) {
+
+		Attendance attendance = attendanceRepository.findById(id).orElse(null);
+
+		if (attendance != null) {
+
+			Long busId = attendance.getBusId();
+
+			attendanceRepository.deleteById(id);
+
+			// Recalculate Bus Occupancy
+			busOccupancyService.calculateBusOccupancy(busId);
+		}
+	}
 
 }

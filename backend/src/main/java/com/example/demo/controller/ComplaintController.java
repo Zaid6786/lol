@@ -11,7 +11,7 @@ import com.example.demo.service.ComplaintService;
 
 @RestController
 @RequestMapping("/complaint")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ComplaintController {
 
     @Autowired

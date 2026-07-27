@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.FleetRouting;
+import com.example.demo.models.fleetrouting;
 
 public interface FleetRoutingService {
 
-    FleetRouting saveFleetRouting(FleetRouting fleetRouting);
+    fleetrouting saveFleetRouting(fleetrouting fleetRouting);
 
-    List<FleetRouting> getAllFleetRoutings();
+    List<fleetrouting> getAllFleetRoutings();
 
-    Optional<FleetRouting> getFleetRoutingById(Long id);
+    Optional<fleetrouting> getFleetRoutingById(Long id);
 
-    FleetRouting updateFleetRouting(Long id, FleetRouting fleetRouting);
+    fleetrouting updateFleetRouting(Long id, fleetrouting fleetRouting);
 
     void deleteFleetRouting(Long id);
 

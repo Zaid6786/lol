@@ -141,7 +141,7 @@ public class RealTimeTracking {
 
     @Override
     public String toString() {
-        return "RealTimeTracking{" +
+        return "Real_Time_Tracking{" +
                 "trackingId=" + trackingId +
                 ", busId=" + busId +
                 ", latitude=" + latitude +

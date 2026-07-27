@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.models.Stops;
+import com.example.demo.models.stops;
 import com.example.demo.service.StopsService;
 
 @RestController
 @RequestMapping("/stops")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class StopsController {
 
     @Autowired
@@ -19,26 +19,26 @@ public class StopsController {
 
     // Save Stop
     @PostMapping("/save")
-    public Stops saveStop(@RequestBody Stops stop) {
+    public stops saveStop(@RequestBody stops stop) {
         return stopsService.saveStop(stop);
     }
 
     // Get All Stops
     @GetMapping("/getall")
-    public List<Stops> getAllStops() {
+    public List<stops> getAllStops() {
         return stopsService.getAllStops();
     }
 
     // Get Stop By Id
     @GetMapping("/get/{id}")
-    public Optional<Stops> getStopById(@PathVariable Long id) {
+    public Optional<stops> getStopById(@PathVariable Long id) {
         return stopsService.getStopById(id);
     }
 
     // Update Stop
     @PutMapping("/update/{id}")
-    public Stops updateStop(@PathVariable Long id,
-                            @RequestBody Stops stop) {
+    public stops updateStop(@PathVariable Long id,
+                            @RequestBody stops stop) {
         return stopsService.updateStop(id, stop);
     }
 

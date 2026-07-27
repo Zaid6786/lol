@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "fleet_routing")
-public class FleetRouting {
+public class fleetrouting {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +44,11 @@ public class FleetRouting {
     private LocalDateTime createdAt;
 
     // Default Constructor
-    public FleetRouting() {
+    public fleetrouting() {
     }
 
     // Parameterized Constructor
-    public FleetRouting(Long fleetId, Long busId, Long routeId,
+    public fleetrouting(Long fleetId, Long busId, Long routeId,
             String startLocation, String destination,
             BigDecimal distance, Integer estimatedTime,
             String status, LocalDateTime createdAt) {
@@ -140,7 +140,7 @@ public class FleetRouting {
 
     @Override
     public String toString() {
-        return "FleetRouting{" +
+        return "fleet_routing{" +
                 "fleetId=" + fleetId +
                 ", busId=" + busId +
                 ", routeId=" + routeId +

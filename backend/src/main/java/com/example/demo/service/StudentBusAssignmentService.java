@@ -7,14 +7,16 @@ import com.example.demo.models.StudentBusAssignment;
 
 public interface StudentBusAssignmentService {
 
-    StudentBusAssignment saveStudentBusAssignment(StudentBusAssignment studentBusAssignment);
+	StudentBusAssignment saveStudentBusAssignment(StudentBusAssignment studentBusAssignment);
 
-    List<StudentBusAssignment> getAllStudentBusAssignments();
+	List<StudentBusAssignment> getAllStudentBusAssignments();
 
-    Optional<StudentBusAssignment> getStudentBusAssignmentById(Long id);
+	Optional<StudentBusAssignment> getStudentBusAssignmentById(Long id);
 
-    StudentBusAssignment updateStudentBusAssignment(Long id, StudentBusAssignment studentBusAssignment);
+	Optional<StudentBusAssignment> getAssignmentByStudentId(Long studentId);
 
-    void deleteStudentBusAssignment(Long id);
+	StudentBusAssignment updateStudentBusAssignment(Long id, StudentBusAssignment studentBusAssignment);
+
+	void deleteStudentBusAssignment(Long id);
 
 }

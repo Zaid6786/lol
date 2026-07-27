@@ -11,193 +11,205 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "student")
-public class Student {
+public class student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private Long studentId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "student_id")
+	private Long studentId;
 
-    @Column(nullable = false)
-    private String name;
+	@Column(nullable = false)
+	private String name;
 
-    @Column(name = "roll_no", nullable = false, unique = true)
-    private String rollNo;
+	@Column(name = "roll_no", nullable = false, unique = true)
+	private String rollNo;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+	@Column(nullable = false, unique = true)
+	private String email;
 
-    @Column(nullable = false)
-    private String password;
+	@Column(nullable = false)
+	private String password;
 
-    private String department;
+	private String department;
 
-    private Integer year;
+	private Integer year;
 
-    @Column(name = "bus_pass_number")
-    private String busPassNumber;
+	@Column(name = "bus_pass_number")
+	private String busPassNumber;
 
-    @Column(name = "route_id")
-    private Long routeId;
+	@Column(name = "route_id")
+	private Long routeId;
 
-    @Column(name = "bus_id")
-    private Long busId;
+	@Column(name = "bus_id")
+	private Long busId;
 
-    @Column(name = "photo_url")
-    private String photoUrl;
+	@Column(name = "photo_url")
+	private String photoUrl;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+	@Column(name = "otp")
+	private String otp;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+	@Column(name = "otp_expiry")
+	private LocalDateTime otpExpiry;
 
-    // Default Constructor
-    public Student() {
-    }
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
 
-    // Parameterized Constructor
-    public Student(Long studentId, String name, String rollNo, String email,
-                   String password, String department, Integer year,
-                   String busPassNumber, Long routeId, Long busId,
-                   String photoUrl, LocalDateTime createdAt,
-                   LocalDateTime updatedAt) {
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
 
-        this.studentId = studentId;
-        this.name = name;
-        this.rollNo = rollNo;
-        this.email = email;
-        this.password = password;
-        this.department = department;
-        this.year = year;
-        this.busPassNumber = busPassNumber;
-        this.routeId = routeId;
-        this.busId = busId;
-        this.photoUrl = photoUrl;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+	// Default Constructor
+	public student() {
+	}
 
-    public Long getStudentId() {
-        return studentId;
-    }
+	// Parameterized Constructor
+	public student(Long studentId, String name, String rollNo, String email, String password, String department,
+			Integer year, String busPassNumber, Long routeId, Long busId, String photoUrl, String otp,
+			LocalDateTime otpExpiry, LocalDateTime createdAt, LocalDateTime updatedAt) {
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
+		this.studentId = studentId;
+		this.name = name;
+		this.rollNo = rollNo;
+		this.email = email;
+		this.password = password;
+		this.department = department;
+		this.year = year;
+		this.busPassNumber = busPassNumber;
+		this.routeId = routeId;
+		this.busId = busId;
+		this.photoUrl = photoUrl;
+		this.otp = otp;
+		this.otpExpiry = otpExpiry;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getStudentId() {
+		return studentId;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
 
-    public String getRollNo() {
-        return rollNo;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setRollNo(String rollNo) {
-        this.rollNo = rollNo;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getRollNo() {
+		return rollNo;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setRollNo(String rollNo) {
+		this.rollNo = rollNo;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getDepartment() {
-        return department;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public Integer getYear() {
-        return year;
-    }
+	public String getDepartment() {
+		return department;
+	}
 
-    public void setYear(Integer year) {
-        this.year = year;
-    }
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 
-    public String getBusPassNumber() {
-        return busPassNumber;
-    }
+	public Integer getYear() {
+		return year;
+	}
 
-    public void setBusPassNumber(String busPassNumber) {
-        this.busPassNumber = busPassNumber;
-    }
+	public void setYear(Integer year) {
+		this.year = year;
+	}
 
-    public Long getRouteId() {
-        return routeId;
-    }
+	public String getBusPassNumber() {
+		return busPassNumber;
+	}
 
-    public void setRouteId(Long routeId) {
-        this.routeId = routeId;
-    }
+	public void setBusPassNumber(String busPassNumber) {
+		this.busPassNumber = busPassNumber;
+	}
 
-    public Long getBusId() {
-        return busId;
-    }
+	public Long getRouteId() {
+		return routeId;
+	}
 
-    public void setBusId(Long busId) {
-        this.busId = busId;
-    }
+	public void setRouteId(Long routeId) {
+		this.routeId = routeId;
+	}
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
+	public Long getBusId() {
+		return busId;
+	}
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
+	public void setBusId(Long busId) {
+		this.busId = busId;
+	}
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+	public String getOtp() {
+		return otp;
+	}
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", name='" + name + '\'' +
-                ", rollNo='" + rollNo + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", department='" + department + '\'' +
-                ", year=" + year +
-                ", busPassNumber='" + busPassNumber + '\'' +
-                ", routeId=" + routeId +
-                ", busId=" + busId +
-                ", photoUrl='" + photoUrl + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
+	public LocalDateTime getOtpExpiry() {
+		return otpExpiry;
+	}
+
+	public void setOtpExpiry(LocalDateTime otpExpiry) {
+		this.otpExpiry = otpExpiry;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	@Override
+	public String toString() {
+		return "student{" + "studentId=" + studentId + ", name='" + name + '\'' + ", rollNo='" + rollNo + '\''
+				+ ", email='" + email + '\'' + ", password='" + password + '\'' + ", department='" + department + '\''
+				+ ", year=" + year + ", busPassNumber='" + busPassNumber + '\'' + ", routeId=" + routeId + ", busId="
+				+ busId + ", photoUrl='" + photoUrl + '\'' + ", otp='" + otp + '\'' + ", otpExpiry=" + otpExpiry
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+	}
 }

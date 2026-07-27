@@ -116,7 +116,7 @@ public class BusDelay {
 
     @Override
     public String toString() {
-        return "BusDelay{" +
+        return "Bus_Delay{" +
                 "delayId=" + delayId +
                 ", busId=" + busId +
                 ", reason='" + reason + '\'' +

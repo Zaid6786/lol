@@ -1,51 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
-import { environment } from '../../environments/environment';
-
-export interface Complaint {
-  complaintId?: number;
-  studentId: number;
-  title: string;
-  description: string;
-  imageUrl?: string;
-  status?: 'PENDING' | 'IN_PROGRESS' | 'RESOLVED';
-  createdAt?: string;
-  resolvedAt?: string;
-  resolvedBy?: number;
-}
+import { Observable } from 'rxjs';
+import { Complaint } from '../models/complaint';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ComplaintService {
 
-  private apiUrl = environment.apiUrl;
+    private baseUrl = 'http://localhost:8085/complaint';
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  submitComplaint(studentId: number, title: string, description: string, image?: File): Observable<Complaint> {
-    const formData = new FormData();
-    formData.append('studentId', studentId.toString());
-    formData.append('title', title);
-    formData.append('description', description);
-    
-    if (image) {
-      formData.append('image', image, image.name);
+    // Save Complaint
+    saveComplaint(complaint: Complaint): Observable<Complaint> {
+        return this.http.post<Complaint>(`${this.baseUrl}/save`, complaint);
     }
 
-    return this.http.post<Complaint>(`${this.apiUrl}/complaint/save`, formData);
-  }
+    // Get All Complaints
+    getAllComplaints(): Observable<Complaint[]> {
+        return this.http.get<Complaint[]>(`${this.baseUrl}/getall`);
+    }
 
-  getStudentComplaints(studentId: number): Observable<Complaint[]> {
-    return this.http.get<Complaint[]>(`${this.apiUrl}/complaint/get/${studentId}`);
-  }
+    // Get Complaint By Id
+    getComplaintById(id: number): Observable<Complaint> {
+        return this.http.get<Complaint>(`${this.baseUrl}/get/${id}`);
+    }
 
-  getAllComplaints(): Observable<Complaint[]> {
-    return this.http.get<Complaint[]>(`${this.apiUrl}/complaint/getall`);
-  }
+    // Update Complaint
+    updateComplaint(id: number, complaint: Complaint): Observable<Complaint> {
+        return this.http.put<Complaint>(`${this.baseUrl}/update/${id}`, complaint);
+    }
 
-  resolveComplaint(complaintId: number, adminId: number): Observable<Complaint> {
-    return this.http.put<Complaint>(`${this.apiUrl}/complaint/update/${complaintId}`, {});
-  }
+    // Delete Complaint
+    deleteComplaint(id: number): Observable<any> {
+        return this.http.delete(`${this.baseUrl}/delete/${id}`, {
+            responseType: 'text'
+        });
+    }
+
 }

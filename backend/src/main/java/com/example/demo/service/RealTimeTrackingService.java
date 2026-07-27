@@ -7,14 +7,17 @@ import com.example.demo.models.RealTimeTracking;
 
 public interface RealTimeTrackingService {
 
-    RealTimeTracking saveRealTimeTracking(RealTimeTracking realTimeTracking);
+	RealTimeTracking saveRealTimeTracking(RealTimeTracking realTimeTracking);
 
-    List<RealTimeTracking> getAllRealTimeTrackings();
+	List<RealTimeTracking> getAllRealTimeTrackings();
 
-    Optional<RealTimeTracking> getRealTimeTrackingById(Long id);
+	Optional<RealTimeTracking> getRealTimeTrackingById(Long id);
 
-    RealTimeTracking updateRealTimeTracking(Long id, RealTimeTracking realTimeTracking);
+	RealTimeTracking updateRealTimeTracking(Long id, RealTimeTracking realTimeTracking);
 
-    void deleteRealTimeTracking(Long id);
+	void deleteRealTimeTracking(Long id);
+
+	// NEW
+	Optional<RealTimeTracking> getLatestTrackingByBusNo(String busNo);
 
 }

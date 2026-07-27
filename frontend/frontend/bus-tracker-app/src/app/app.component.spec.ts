@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bus-tracker-app'`, () => {
+  it(`should have as title 'bus-crowd-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bus-tracker-app');
+    expect(app.title).toEqual('bus-crowd-frontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bus-tracker-app app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('bus-crowd-frontend app is running!');
   });
 });

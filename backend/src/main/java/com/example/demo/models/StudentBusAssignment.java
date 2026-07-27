@@ -115,7 +115,7 @@ public class StudentBusAssignment {
 
     @Override
     public String toString() {
-        return "StudentBusAssignment{" +
+        return "Student_Bus_Assignment{" +
                 "assignmentId=" + assignmentId +
                 ", studentId=" + studentId +
                 ", busId=" + busId +

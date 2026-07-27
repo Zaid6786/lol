@@ -123,7 +123,7 @@ public class BusLocation {
 
     @Override
     public String toString() {
-        return "BusLocation{" +
+        return "Bus_Location{" +
                 "id=" + id +
                 ", busId=" + busId +
                 ", latitude=" + latitude +

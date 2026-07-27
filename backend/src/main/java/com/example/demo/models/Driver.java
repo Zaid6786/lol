@@ -29,12 +29,6 @@ public class Driver {
     @Column(nullable = false, unique = true)
     private String license;
 
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
     @Enumerated(EnumType.STRING)
     private DriverStatus status = DriverStatus.AVAILABLE;
 
@@ -47,14 +41,11 @@ public class Driver {
 
     // Parameterized Constructor
     public Driver(Long driverId, String name, String phone, String license,
-                  String username, String password,
                   DriverStatus status, LocalDateTime createdAt) {
         this.driverId = driverId;
         this.name = name;
         this.phone = phone;
         this.license = license;
-        this.username = username;
-        this.password = password;
         this.status = status;
         this.createdAt = createdAt;
     }
@@ -93,22 +84,6 @@ public class Driver {
         this.license = license;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public DriverStatus getStatus() {
         return status;
     }
@@ -132,7 +107,6 @@ public class Driver {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", license='" + license + '\'' +
-                ", username='" + username + '\'' +
                 ", status=" + status +
                 ", createdAt=" + createdAt +
                 '}';

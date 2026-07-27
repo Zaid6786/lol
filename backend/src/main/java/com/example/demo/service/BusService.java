@@ -7,14 +7,16 @@ import com.example.demo.models.Bus;
 
 public interface BusService {
 
-    Bus saveBus(Bus bus);
+	Bus saveBus(Bus bus);
 
-    List<Bus> getAllBuses();
+	List<Bus> getAllBuses();
 
-    Optional<Bus> getBusById(Long id);
+	Optional<Bus> getBusById(Long id);
 
-    Bus updateBus(Long id, Bus bus);
+	Bus updateBus(Long id, Bus bus);
 
-    void deleteBus(Long id);
+	void deleteBus(Long id);
+
+	Optional<Bus> getBusByBusNo(String busNo);
 
 }

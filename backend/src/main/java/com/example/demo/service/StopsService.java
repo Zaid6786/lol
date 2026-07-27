@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.Stops;
+import com.example.demo.models.stops;
 
 public interface StopsService {
 
-    Stops saveStop(Stops stop);
+    stops saveStop(stops stop);
 
-    List<Stops> getAllStops();
+    List<stops> getAllStops();
 
-    Optional<Stops> getStopById(Long id);
+    Optional<stops> getStopById(Long id);
 
-    Stops updateStop(Long id, Stops stop);
+    stops updateStop(Long id, stops stop);
 
     void deleteStop(Long id);
 

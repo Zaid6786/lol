@@ -11,50 +11,53 @@ import com.example.demo.service.RealTimeTrackingService;
 
 @RestController
 @RequestMapping("/realtimetracking")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RealTimeTrackingController {
 
-    @Autowired
-    private RealTimeTrackingService realTimeTrackingService;
+	@Autowired
+	private RealTimeTrackingService realTimeTrackingService;
 
-    // Save Real Time Tracking
-    @PostMapping("/save")
-    public RealTimeTracking saveRealTimeTracking(
-            @RequestBody RealTimeTracking realTimeTracking) {
+	// Save Real Time Tracking
+	@PostMapping("/save")
+	public RealTimeTracking saveRealTimeTracking(@RequestBody RealTimeTracking realTimeTracking) {
 
-        return realTimeTrackingService.saveRealTimeTracking(realTimeTracking);
-    }
+		return realTimeTrackingService.saveRealTimeTracking(realTimeTracking);
+	}
 
-    // Get All Real Time Tracking Records
-    @GetMapping("/getall")
-    public List<RealTimeTracking> getAllRealTimeTrackings() {
+	// Get All Real Time Tracking Records
+	@GetMapping("/getall")
+	public List<RealTimeTracking> getAllRealTimeTrackings() {
 
-        return realTimeTrackingService.getAllRealTimeTrackings();
-    }
+		return realTimeTrackingService.getAllRealTimeTrackings();
+	}
 
-    // Get Real Time Tracking By Id
-    @GetMapping("/get/{id}")
-    public Optional<RealTimeTracking> getRealTimeTrackingById(
-            @PathVariable Long id) {
+	// Get Real Time Tracking By Id
+	@GetMapping("/get/{id}")
+	public Optional<RealTimeTracking> getRealTimeTrackingById(@PathVariable Long id) {
 
-        return realTimeTrackingService.getRealTimeTrackingById(id);
-    }
+		return realTimeTrackingService.getRealTimeTrackingById(id);
+	}
 
-    // Update Real Time Tracking
-    @PutMapping("/update/{id}")
-    public RealTimeTracking updateRealTimeTracking(
-            @PathVariable Long id,
-            @RequestBody RealTimeTracking realTimeTracking) {
+	// Update Real Time Tracking
+	@PutMapping("/update/{id}")
+	public RealTimeTracking updateRealTimeTracking(@PathVariable Long id,
+			@RequestBody RealTimeTracking realTimeTracking) {
 
-        return realTimeTrackingService.updateRealTimeTracking(id, realTimeTracking);
-    }
+		return realTimeTrackingService.updateRealTimeTracking(id, realTimeTracking);
+	}
 
-    // Delete Real Time Tracking
-    @DeleteMapping("/delete/{id}")
-    public String deleteRealTimeTracking(@PathVariable Long id) {
+	// Delete Real Time Tracking
+	@DeleteMapping("/delete/{id}")
+	public String deleteRealTimeTracking(@PathVariable Long id) {
 
-        realTimeTrackingService.deleteRealTimeTracking(id);
-        return "Real Time Tracking Deleted Successfully";
-    }
+		realTimeTrackingService.deleteRealTimeTracking(id);
+		return "Real Time Tracking Deleted Successfully";
+	}
+
+	@GetMapping("/bus/{busNo}")
+	public Optional<RealTimeTracking> getLatestTrackingByBusNo(@PathVariable String busNo) {
+
+		return realTimeTrackingService.getLatestTrackingByBusNo(busNo);
+	}
 
 }

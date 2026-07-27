@@ -11,7 +11,7 @@ import com.example.demo.service.NotificationService;
 
 @RestController
 @RequestMapping("/notification")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class NotificationController {
 
     @Autowired

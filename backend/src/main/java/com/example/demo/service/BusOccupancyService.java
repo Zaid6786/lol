@@ -7,14 +7,25 @@ import com.example.demo.models.BusOccupancy;
 
 public interface BusOccupancyService {
 
-    BusOccupancy saveBusOccupancy(BusOccupancy busOccupancy);
+	// Save Bus Occupancy
+	BusOccupancy saveBusOccupancy(BusOccupancy busOccupancy);
 
-    List<BusOccupancy> getAllBusOccupancies();
+	// Get All Bus Occupancies
+	List<BusOccupancy> getAllBusOccupancies();
 
-    Optional<BusOccupancy> getBusOccupancyById(Long id);
+	// Get Bus Occupancy By Database Id
+	Optional<BusOccupancy> getBusOccupancyById(Long id);
 
-    BusOccupancy updateBusOccupancy(Long id, BusOccupancy busOccupancy);
+	// Get Bus Occupancy By Bus Id
+	Optional<BusOccupancy> getBusOccupancyByBusId(Long busId);
 
-    void deleteBusOccupancy(Long id);
+	// Update Bus Occupancy
+	BusOccupancy updateBusOccupancy(Long id, BusOccupancy busOccupancy);
+
+	// Delete Bus Occupancy
+	void deleteBusOccupancy(Long id);
+
+	// Calculate Occupancy Automatically
+	void calculateBusOccupancy(Long busId);
 
 }

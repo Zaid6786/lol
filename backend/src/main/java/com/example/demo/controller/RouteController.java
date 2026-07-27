@@ -11,7 +11,7 @@ import com.example.demo.service.RouteService;
 
 @RestController
 @RequestMapping("/route")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RouteController {
 
     @Autowired
