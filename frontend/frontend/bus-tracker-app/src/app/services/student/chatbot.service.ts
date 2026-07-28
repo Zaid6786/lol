@@ -18,12 +18,45 @@ export class ChatbotService {
       'Authorization': `Bearer ${token}`
     });
 
-    // Note: If environment.apiUrl already has '/api', we construct the path carefully.
-    // The spec requests: `${environment.apiUrl}/api/student/chat`
-    // We will call this endpoint. If it returns 404/failure, we trigger the offline simulator.
-    const url = `${environment.apiUrl}/student/chat`;
+    // Retrieve student info from session storage
+    let studentId = 0;
+    let studentName = 'Student';
+    let registrationNumber = 'Unknown';
+    const studentStr = sessionStorage.getItem('student') || localStorage.getItem('student');
+    if (studentStr) {
+      try {
+        const student = JSON.parse(studentStr);
+        studentId = student.studentId || Number(sessionStorage.getItem('studentId')) || 0;
+        studentName = student.name || sessionStorage.getItem('studentName') || 'Student';
+        registrationNumber = student.rollNo || sessionStorage.getItem('studentRollNo') || 'Unknown';
+      } catch (e) {}
+    } else {
+        studentId = Number(sessionStorage.getItem('studentId')) || Number(localStorage.getItem('studentId')) || 0;
+    }
 
-    return this.http.post<ChatResponse>(url, { message }, { headers }).pipe(
+    let sessionId = sessionStorage.getItem('chatbotSessionId');
+    if (!sessionId) {
+      sessionId = 'session-' + studentId + '-' + Date.now();
+      sessionStorage.setItem('chatbotSessionId', sessionId);
+    }
+
+    const payload = {
+      sessionId: sessionId,
+      student: {
+        studentId: studentId,
+        studentName: studentName,
+        registrationNumber: registrationNumber
+      },
+      question: message
+    };
+
+    const url = `${environment.apiUrl}/chat`; // Points to /api/v1/chat
+
+    return this.http.post<any>(url, payload, { headers }).pipe(
+      map(res => {
+        // Map the backend StudentChatResponseDTO to the local ChatResponse
+        return { response: res.answer };
+      }),
       catchError(err => {
         console.warn('Backend chat API failed or is offline. Using local AI simulator.');
         return of(this.simulateChatbotResponse(message));

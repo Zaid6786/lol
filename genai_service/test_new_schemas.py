@@ -2,7 +2,7 @@ from app.models.schemas import StudentBusChatRequest
 
 
 request = StudentBusChatRequest(
-    session_id="test-session-123",
+    
     student={
         "student_id": 501,
         "student_name": "Praveen",
