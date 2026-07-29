@@ -6,6 +6,9 @@ WORKDIR /app
 COPY . .
 
 # Run the maven build inside the backend directory (this also builds Angular)
+WORKDIR /app
+RUN echo "=== CONTENTS OF /app ===" && ls -la && echo "=== CONTENTS OF /app/backend (if exists) ===" && ls -la backend || true
+
 WORKDIR /app/backend
 RUN mvn clean package -DskipTests
 
