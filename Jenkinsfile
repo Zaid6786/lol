@@ -11,6 +11,7 @@ node {
     }
   }
   stage('Deploy to Docker') {
+    sh "docker system prune -f"
     sh "docker-compose down || true"
     sh "docker-compose up -d --build"
   }
