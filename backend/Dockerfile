@@ -24,11 +24,10 @@ RUN mvn clean package -DskipTests
 # Stage 2: Run the unified application (Python + Java)
 FROM python:3.13-slim
 
-# Install OpenJDK 21
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends openjdk-21-jre-headless && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Copy OpenJDK 21 directly from the official image to avoid apt-get disk space issues
+COPY --from=eclipse-temurin:21-jre /opt/java/openjdk /opt/java/openjdk
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 WORKDIR /app
 
