@@ -120,7 +120,6 @@
 				<version>1.15.0</version>
 				<configuration>
 					<workingDirectory>../frontend/frontend/bus-tracker-app</workingDirectory>
-					<installDirectory>target</installDirectory>
 				</configuration>
 				<executions>
 					<execution>
