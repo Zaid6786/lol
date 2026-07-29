@@ -23,8 +23,8 @@ WORKDIR /app
 # Copy the built JAR from the build stage
 COPY --from=build /app/backend/target/*.jar app.jar
 
-# Copy the genai_service Python app
-COPY genai_service ./genai_service
+# Copy the genai_service Python app from the build stage
+COPY --from=build /app/genai_service ./genai_service
 
 # Install Python requirements
 WORKDIR /app/genai_service
