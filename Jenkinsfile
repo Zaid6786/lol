@@ -12,7 +12,8 @@ node {
   }
   stage('Deploy to Docker') {
     sh "docker system prune -f"
-    sh "docker-compose down || true"
-    sh "docker-compose up -d --build"
+    sh "docker rm -f collegebus-monolith || true"
+    sh "docker build -t collegebus-monolith ."
+    sh "docker run -d --name collegebus-monolith -p 8085:8085 collegebus-monolith"
   }
 }

@@ -54,21 +54,20 @@ export class GlobalChatbotComponent implements AfterViewChecked {
     this.newMessage = '';
     this.isTyping = true;
     
-    // Prepare minimal payload expected by FastAPI schema
+    // Prepare payload for Java Backend ChatbotController
     const payload = {
-      session_id: this.sessionId,
+      sessionId: this.sessionId,
       question: userText,
       student: {
-        student_id: 1,
-        student_name: 'Current User',
-        registration_number: '2026C01'
+        studentId: 1,
+        studentName: 'Current User',
+        registrationNumber: '2026C01'
       }
     };
     
-    // Determine the GenAI API URL to use. If undefined, default to 8000.
-    const genaiApiUrl = (environment as any).genaiUrl || `${environment.genaiUrl}`;
+    const apiUrl = environment.apiUrl;
 
-    this.http.post<any>(`${genaiApiUrl}/api/v1/student-bus-chat`, payload).subscribe({
+    this.http.post<any>(`${apiUrl}/api/v1/chat`, payload).subscribe({
       next: (response) => {
         this.isTyping = false;
         this.messages.push({ text: response.answer, isUser: false });
