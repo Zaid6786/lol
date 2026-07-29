@@ -50,7 +50,7 @@ export class ChatbotService {
       question: message
     };
 
-    const url = `${environment.apiUrl}/chat`; // Points to /api/v1/chat
+    const url = `${environment.apiUrl}/api/v1/chat`;
 
     return this.http.post<any>(url, payload, { headers }).pipe(
       map(res => {

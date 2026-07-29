@@ -54,6 +54,7 @@ import { ThemeComponent } from './pages/admintheme/theme.component';
 import { DatabaseBackupComponent } from './pages/database-backup/database-backup.component';
 import { StudentSettingsComponent } from './pages/student-settings/student-settings.component';
 import { StudentThemeComponent } from './pages/student-theme/student-theme.component';
+import { ChatbotComponent } from './modules/student/chatbot/chatbot.component';
 
 
 const routes: Routes = [
@@ -129,6 +130,10 @@ const routes: Routes = [
       {
         path: 'student-theme',
         component: StudentThemeComponent
+      },
+      {
+        path: 'student-chatbot',
+        component: ChatbotComponent
       },
       {
         path: 'student-live-bus-tracking',
