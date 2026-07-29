@@ -15,6 +15,7 @@ RUN if [ -f "pom.xml" ]; then \
         cp -r /tmp/repo/genai_service /temp-workspace/; \
         rm -rf /app/*; \
         cp -r /temp-workspace/* /app/; \
+        rm -rf /temp-workspace /tmp/repo; \
     fi
 
 WORKDIR /app/backend
@@ -25,7 +26,7 @@ FROM python:3.13-slim
 
 # Install OpenJDK 21
 RUN apt-get update && \
-    apt-get install -y openjdk-21-jre-headless && \
+    apt-get install -y --no-install-recommends openjdk-21-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
