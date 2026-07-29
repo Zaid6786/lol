@@ -1,14 +1,17 @@
-# Use an official OpenJDK runtime as a base image
-FROM eclipse-temurin:17-jdk
-
-# Set the working directory inside the container
+# Stage 1: Build the backend application
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the built JAR file into the container
-# Adjust the JAR name if your build produces a different one
-COPY target/*.jar app.jar
+# Stage 2: Run the application
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+# Copy the built JAR from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-# Expose the port your app runs on (e.g., 8085)
+# Expose the port your app runs on
 EXPOSE 8085
 
 # Run the JAR

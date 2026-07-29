@@ -4,8 +4,14 @@ node {
   }
   stage('SonarQube Analysis') {
     def mvn = tool 'Default Maven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=hello"
+    dir('backend') {
+      withSonarQubeEnv() {
+        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=hello"
+      }
     }
+  }
+  stage('Deploy to Docker') {
+    sh "docker-compose down || true"
+    sh "docker-compose up -d --build"
   }
 }
