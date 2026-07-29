@@ -13,7 +13,7 @@ node {
   stage('Deploy to Docker') {
     sh "docker system prune -f"
     sh "docker rm -f collegebus-monolith || true"
-    sh "docker build -f backend/Dockerfile -t collegebus-monolith ."
+    sh "docker build -f Dockerfile -t collegebus-monolith ."
     sh "docker run -d --name collegebus-monolith -p 8085:8085 -e GROQ_API_KEY=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 collegebus-monolith"
   }
 }
