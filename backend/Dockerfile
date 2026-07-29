@@ -8,8 +8,8 @@ WORKDIR /app
 # Adjust the JAR name if your build produces a different one
 COPY target/*.jar app.jar
 
-# Expose the port your app runs on (e.g., 8080)
-EXPOSE 8080
+# Expose the port your app runs on (e.g., 8085)
+EXPOSE 8085
 
 # Run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]

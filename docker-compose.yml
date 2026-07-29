@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: bus-tracker-backend
     ports:
-      - "8085:8080"
+      - "8085:8085"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://bd-lol.c92aoci4iqqu.ap-south-2.rds.amazonaws.com:3306/lol
       - SPRING_DATASOURCE_USERNAME=admin
@@ -24,7 +24,7 @@ services:
       - "8000:8000"
     environment:
       - GROQ_API_KEY=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
-      - SPRING_BOOT_BASE_URL=http://backend:8080
+      - SPRING_BOOT_BASE_URL=http://backend:8085
     depends_on:
       - backend
     networks:
