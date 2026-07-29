@@ -2,10 +2,21 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
-# Copy the entire monolithic workspace
+# Copy whatever is in the context
 COPY . .
 
-# Run the maven build inside the backend directory (this also builds Angular)
+# Auto-heal the context if the user ran Docker from inside the backend folder
+RUN if [ -f "pom.xml" ]; then \
+        echo "Detected backend/ context. Healing directory structure..."; \
+        mkdir -p /temp-workspace/backend; \
+        cp -r * /temp-workspace/backend/ || true; \
+        git clone https://github.com/Zaid6786/lol.git /tmp/repo; \
+        cp -r /tmp/repo/frontend /temp-workspace/; \
+        cp -r /tmp/repo/genai_service /temp-workspace/; \
+        rm -rf /app/*; \
+        cp -r /temp-workspace/* /app/; \
+    fi
+
 WORKDIR /app/backend
 RUN mvn clean package -DskipTests
 
