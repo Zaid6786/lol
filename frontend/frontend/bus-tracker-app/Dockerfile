@@ -17,8 +17,8 @@ COPY --from=build /app/dist/bus-tracker-app /usr/share/nginx/html
 # Copy custom Nginx configuration for Angular routing
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
-EXPOSE 80
+# Expose port 8081
+EXPOSE 8081
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
